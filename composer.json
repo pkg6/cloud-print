@@ -1,0 +1,46 @@
+{
+  "name": "pkg6/cloud-print",
+  "license": "MIT",
+  "description": "非官方云小票机SDK，支持飞鹅云，芯烨云，易联云，快递100，映美云，中午云，佳博云，优声云，365智能云打印等",
+  "keywords": [
+    "Cloud Print",
+    "云打印机",
+    "云小票机",
+    "飞鹅云",
+    "芯烨云",
+    "易联云",
+    "快递100",
+    "映美云",
+    "佳博云",
+    "365智能云打印",
+    "中午云",
+    "优声云"
+  ],
+  "authors": [
+    {
+      "name": "qmister",
+      "email": "tp5er@qq.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "ext-json": "*",
+    "guzzlehttp/guzzle": "^6|^7",
+    "pimple/pimple": "^3.0",
+    "monolog/monolog": "^2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6|^7|^8|^9",
+    "mockery/mockery": "^1.2.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Pkg6\\cloudPrint\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Pkg6\\cloudPrint\\Tests\\": "tests/"
+    }
+  }
+}

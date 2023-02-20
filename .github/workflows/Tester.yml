@@ -1,0 +1,25 @@
+name: Tester
+on: [push]
+
+jobs:
+  PHPUnit:
+    name: ${{ matrix.os }}-php-${{ matrix.php-version }}
+    runs-on: "${{ matrix.os }}"
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ ubuntu-latest]
+        php-version:
+          - 7.2
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: openssl
+      - name: Install Dependencies
+        run: composer install --no-progress
+      - name: Run PHPUnit
+        run: vendor/bin/phpunit
