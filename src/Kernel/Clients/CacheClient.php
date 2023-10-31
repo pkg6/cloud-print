@@ -13,11 +13,16 @@ class CacheClient extends BaseClient
      * @return CacheInterface
      *
      */
-    private function store($cache = null)
+    private function store()
     {
         $config = $this->app->getConfig();
-        if (isset($config["cache"]) && $config["cache"] instanceof CacheInterface) {
-            return $config["cache"];
+        if (isset($config["cache"]['class'])){
+            if (class_exists($config["cache"]['class'])){
+                $c= new $config["cache"]['class']($config["cache"]);
+                if ($c instanceof CacheInterface){
+                    return $c;
+                }
+            }
         }
         return new FileCache();
 

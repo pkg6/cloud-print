@@ -23,7 +23,19 @@
 $printer = \Pkg6\cloudPrint\Factory::Feieyun([
     'user' => '',
     'ukey' => '',
-    "cache"=>new \Pkg6\cloudPrint\Kernel\Cache\FileCache(["path"=>"./cache/"])
+    'cache' => [
+        //必须定义
+        "class" => FileCache::class,
+        //其他选项
+        'expire'        => 0,
+        'cache_subdir'  => true,
+        'prefix'        => '',
+        'path'          => './cache/',
+        'hash_type'     => 'md5',
+        'data_compress' => false,
+        'tag_prefix'    => 'tag:',
+        'serialize'     => [],
+    ],
 ]);
 ~~~
 

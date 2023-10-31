@@ -46,10 +46,20 @@ class ServiceContainer extends Container
     {
         $base = [
             // http://docs.guzzlephp.org/en/stable/request-options.html
-            'http' => [
+            'http'  => [
                 'timeout' => 30.0,
             ],
-//            'cache'    => new FileCache(),
+            'cache' => [
+                "class" => FileCache::class,
+                'expire'        => 0,
+                'cache_subdir'  => true,
+                'prefix'        => '',
+                'path'          => '',
+                'hash_type'     => 'md5',
+                'data_compress' => false,
+                'tag_prefix'    => 'tag:',
+                'serialize'     => [],
+            ],
         ];
 
         return array_replace_recursive($base, $this->defaultConfig, $this->userConfig);
