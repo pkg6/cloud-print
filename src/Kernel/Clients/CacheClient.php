@@ -15,7 +15,7 @@ class CacheClient extends BaseClient
      */
     public function setCache($key, $value)
     {
-        return file_put_contents($key, unserialize($value));
+        return file_put_contents($key, $value);
     }
 
     /**
