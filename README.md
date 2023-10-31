@@ -15,6 +15,17 @@
 \Pkg6\cloudPrint\Kernel\BaseClient::$request_log=true;
 ~~~
 
+## 自定义缓存
+
+> 基于https://packagist.org/packages/psr/simple-cache#1.0
+
+~~~
+$printer = \Pkg6\cloudPrint\Factory::Feieyun([
+    'user' => '',
+    'ukey' => '',
+    "cache"=>new \Pkg6\cloudPrint\Kernel\Cache\FileCache(["path"=>"./cache/"])
+]);
+~~~
 
 ## 案例
 
@@ -89,7 +100,7 @@ $printer = \Pkg6\cloudPrint\Factory::Xpyun([
 ])->printer;
 ~~~
 
-基于 [飞鹅云](http://help.feieyun.com/document.php) 的 PHP 接口组件
+### 基于 [飞鹅云](http://help.feieyun.com/document.php) 的 PHP 接口组件
 
 ~~~
 $printer = \Pkg6\cloudPrint\Factory::Feieyun([

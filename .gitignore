@@ -6,6 +6,7 @@
 /*.log
 /*.pid
 /runtime
+/.cache
 /composer.lock
 .php_cs.cache
 .phpunit.result.cache

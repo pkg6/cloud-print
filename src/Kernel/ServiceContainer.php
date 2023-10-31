@@ -3,6 +3,7 @@
 namespace Pkg6\cloudPrint\Kernel;
 
 use Pimple\Container;
+use Pkg6\cloudPrint\Kernel\Cache\FileCache;
 
 
 /**
@@ -48,13 +49,7 @@ class ServiceContainer extends Container
             'http' => [
                 'timeout' => 30.0,
             ],
-//            'cache'    => [
-//                'prefix' => 'cloud_print',
-//                'path'   => './.runtime/cache',
-//            ],
-//            'logger'   => [
-//                'logfile' => './.runtime/logger/' . date('Y-m-d') . '.log',
-//            ]
+//            'cache'    => new FileCache(),
         ];
 
         return array_replace_recursive($base, $this->defaultConfig, $this->userConfig);
