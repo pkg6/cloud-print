@@ -25,7 +25,7 @@ class LoggerClient extends BaseClient
      */
     protected function _initialize()
     {
-        $this->lconfig = array_merge($this->lconfig, $this->config['logger']);
+        $this->lconfig = array_merge($this->lconfig, $this->config['logger']?? []);
     }
 
     /**
