@@ -25,7 +25,7 @@ $printer = \Pkg6\cloudPrint\Factory::Feieyun([
     'ukey' => '',
     'cache' => [
         //必须定义
-        "class" => FileCache::class,
+        "class" => \Pkg6\Cache\cache\driver\File::class,
         //其他选项
         'expire'        => 0,
         'cache_subdir'  => true,
