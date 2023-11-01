@@ -23,12 +23,10 @@ class LoggerClient extends BaseClient
     /**
      * @return mixed|void
      */
-    public function __construct($app)
+    protected function _initialize()
     {
-        parent::__construct($app);
-        $this->lconfig = array_merge($this->lconfig, $this->config['logger'] ?? []);
+        $this->lconfig = array_merge($this->lconfig, $this->config['logger']);
     }
-
 
     /**
      * @param $channel
