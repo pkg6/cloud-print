@@ -16,7 +16,7 @@ trait HttpClient
      */
     protected $guzzleConfig = [
         'headers'=>[
-            'User-Agent' => 'cloud-print (https://github.com/Pkg6/cloud-print)',
+            'User-Agent' => 'cloud-print (https://github.com/pkg6/cloud-print)',
         ]
     ];
 
