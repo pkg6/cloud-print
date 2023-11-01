@@ -16,10 +16,13 @@ class CacheClient extends BaseClient
     private function store()
     {
         $config = $this->app->getConfig();
-        if (isset($config["cache"]['class'])){
-            if (class_exists($config["cache"]['class'])){
-                $c= new $config["cache"]['class']($config["cache"]);
-                if ($c instanceof CacheInterface){
+        if (isset($config["cache"])){
+            if ($config["cache"] instanceof CacheInterface){
+                return $config["cache"];
+            }
+            if (class_exists($config["cache"]['class'])) {
+                $c = new $config["cache"]['class']($config["cache"]);
+                if ($c instanceof CacheInterface) {
                     return $c;
                 }
             }
