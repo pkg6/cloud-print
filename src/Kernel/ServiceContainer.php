@@ -3,7 +3,7 @@
 namespace Pkg6\cloudPrint\Kernel;
 
 use Pimple\Container;
-use Pkg6\cloudPrint\Kernel\Cache\FileCache;
+use Pkg6\Cache\cache\driver\File;
 
 
 /**
@@ -50,7 +50,7 @@ class ServiceContainer extends Container
                 'timeout' => 30.0,
             ],
             'cache' => [
-                "class" => FileCache::class,
+                "class"         => File::class,
                 'expire'        => 0,
                 'cache_subdir'  => true,
                 'prefix'        => '',
