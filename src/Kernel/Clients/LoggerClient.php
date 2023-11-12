@@ -2,43 +2,35 @@
 
 namespace Pkg6\cloudPrint\Kernel\Clients;
 
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
 use Pkg6\cloudPrint\Kernel\BaseClient;
+use Pkg6\Log\handler\StreamHandler;
+use Pkg6\Log\Logger;
+use Psr\Log\LoggerInterface;
 
 
 class LoggerClient extends BaseClient
 {
 
     /**
-     * @var array
+     * @return LoggerInterface
      */
-    protected $lconfig = [
-        'channel' => 'cloud-print',
-        'stream'  => null,
-        'level'   => Logger::DEBUG
-    ];
-
-
-    /**
-     * @return mixed|void
-     */
-    protected function _initialize()
+    protected function logger()
     {
-        $this->lconfig = array_merge($this->lconfig, $this->config['logger']?? []);
+        $config = $this->app->getConfig();
+        if (isset($config["logger"])) {
+            if ($config["logger"] instanceof LoggerInterface) {
+                return $config["logger"];
+            }
+            if (class_exists($config["logger"]['class'])) {
+                $c = new $config["logger"]['class']($config["logger"]);
+                if ($c instanceof LoggerInterface) {
+                    return $c;
+                }
+            }
+        }
+        return new Logger([new StreamHandler()]);
     }
 
-    /**
-     * @param $channel
-     * @return Logger
-     */
-    public function channel($channel)
-    {
-        $logger = new Logger($channel);
-        $stream = $this->lconfig['stream'] ?: './runtime' . DIRECTORY_SEPARATOR . $channel . DIRECTORY_SEPARATOR . date('Ymd') . '.log';
-        $logger->pushHandler(new StreamHandler($stream, $this->lconfig['level']));
-        return $logger;
-    }
 
     /**
      * @param $name
@@ -47,6 +39,6 @@ class LoggerClient extends BaseClient
      */
     public function __call($name, $arguments)
     {
-        return $this->channel($this->lconfig['channel'])->$name(...$arguments);
+        return $this->logger()->$name(...$arguments);
     }
 }

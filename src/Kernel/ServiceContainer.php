@@ -60,6 +60,12 @@ class ServiceContainer extends Container
                 'tag_prefix'    => 'tag:',
                 'serialize'     => [],
             ],
+//            "cache"=>new File(),
+//            "logger" => [
+//                "class"        => loggerClass::class,
+//                "other_config" => "",
+//            ],
+//            "logger" =>  new Logger(),
         ];
 
         return array_replace_recursive($base, $this->defaultConfig, $this->userConfig);
