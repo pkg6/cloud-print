@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\cloudPrint;
 
 use InvalidArgumentException;
@@ -32,12 +40,12 @@ class Factory
      */
     protected static function make($name, array $config)
     {
-        $app = __NAMESPACE__.'\\'.$name.'\\AppContainer';
-        if (!class_exists($app)) {
-            throw new InvalidArgumentException('class not exists:'.$app);
+        $app = __NAMESPACE__ . '\\' . $name . '\\AppContainer';
+        if ( ! class_exists($app)) {
+            throw new InvalidArgumentException('class not exists:' . $app);
         }
-        $instance = crc32($name.serialize($config));
-        if (!isset(self::$instances[$instance])) {
+        $instance = crc32($name . serialize($config));
+        if ( ! isset(self::$instances[$instance])) {
             self::$instances[$instance] = new $app($config);
         }
 
@@ -52,7 +60,7 @@ class Factory
      */
     public static function __callStatic($name, $arguments)
     {
-//        $config = (array_key_exists(0, $arguments) && is_array($arguments) ? $arguments[0] : []);
+        //        $config = (array_key_exists(0, $arguments) && is_array($arguments) ? $arguments[0] : []);
         return self::make($name, ...$arguments);
     }
 }

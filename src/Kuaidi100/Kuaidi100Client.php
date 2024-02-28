@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\cloudPrint\Kuaidi100;
 
 use Exception;
@@ -18,28 +26,29 @@ class Kuaidi100Client extends BaseClient
      * @param $private_params
      *
      * @return string
-     * @throws Exception
      *
+     * @throws Exception
      * @throws GuzzleException
      */
     public function request($url, $action, $private_params)
     {
         $timestamp = Timer::timeStamp();
-        $params    = [
+        $params = [
             'method' => $action,
-            'key'    => $this->config['key'],
-            'sign'   => $this->sign($private_params, $timestamp),
-            't'      => $timestamp,
-            'param'  => json_encode($private_params),
+            'key' => $this->config['key'],
+            'sign' => $this->sign($private_params, $timestamp),
+            't' => $timestamp,
+            'param' => json_encode($private_params),
         ];
         if ($action == 'imgOrder') {
             $methed = 'GET';
-            $resp   = $this->httpGet($url, $params, ['Content-Type' => 'multipart/form-data']);
+            $resp = $this->httpGet($url, $params, ['Content-Type' => 'multipart/form-data']);
         } else {
             $methed = 'POST';
-            $resp   = $this->httpPost($url, $params);
+            $resp = $this->httpPost($url, $params);
         }
         $this->requestLog($methed . ':' . $url, $params, $resp);
+
         return $resp;
     }
 

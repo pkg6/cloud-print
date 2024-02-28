@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\cloudPrint\Zhongwuyun;
 
 use Exception;
@@ -23,27 +31,28 @@ class ZhongwuyunClient extends BaseClient
      * @param bool $is_get
      *
      * @return string
-     * @throws Exception
      *
+     * @throws Exception
      * @throws GuzzleException
      */
     public function request($action, $private_params, $is_get = false)
     {
-        $public_params  = [
-            'appid'     => $this->config['appid'],
+        $public_params = [
+            'appid' => $this->config['appid'],
             'timestamp' => Timer::timeStamp(),
         ];
-        $params         = array_filter(array_merge($public_params, $private_params));
+        $params = array_filter(array_merge($public_params, $private_params));
         $params['sign'] = $this->sign($params);
-        $url            = $this->config['host'] ?? $this->host . '/' . $action;
+        $url = $this->config['host'] ?? $this->host . '/' . $action;
         if ($is_get) {
             $methed = 'GET';
-            $resp   = $this->httpGet($url, $params);
+            $resp = $this->httpGet($url, $params);
         } else {
             $methed = 'POST';
-            $resp   = $this->httpPost($url, $params);
+            $resp = $this->httpPost($url, $params);
         }
         $this->requestLog($methed . ':' . $url, $params, $resp);
+
         return $resp;
     }
 

@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
 
 namespace Pkg6\cloudPrint\Tests;
 
@@ -9,7 +16,6 @@ use PHPUnit\Framework\TestCase;
 use Pkg6\cloudPrint\Factory;
 use Pkg6\cloudPrint\Kernel\BaseClient;
 use Pkg6\cloudPrint\Zhongwuyun\AppContainer;
-
 
 class BaseTest extends TestCase
 {
@@ -49,7 +55,7 @@ class BaseTest extends TestCase
     public function Jolimark()
     {
         return Factory::Jolimark([
-            'app_id'  => 'dasdas',
+            'app_id' => 'dasdas',
             'app_key' => 'fsjkdfklsadsadsa',
         ]);
     }
@@ -60,7 +66,7 @@ class BaseTest extends TestCase
     public function Kuaidi100()
     {
         return Factory::Kuaidi100([
-            'key'    => 'daskdlaskd',
+            'key' => 'daskdlaskd',
             'secret' => 'fdsjfjdsklfjks',
         ]);
     }
@@ -72,7 +78,7 @@ class BaseTest extends TestCase
     {
         return Factory::Poscom([
             'memberCode' => 'fsklfkasld',
-            'apiKey'     => 'fjaksljfkalsjkjk',
+            'apiKey' => 'fjaksljfkalsjkjk',
         ]);
     }
 
@@ -92,7 +98,7 @@ class BaseTest extends TestCase
     public function Ushengyun()
     {
         return Factory::Ushengyun([
-            'appId'     => '10001',
+            'appId' => '10001',
             'appSecret' => '**********',
         ]);
     }
@@ -103,7 +109,7 @@ class BaseTest extends TestCase
     public function Xpyun()
     {
         return Factory::Xpyun([
-            'user'    => 'fsjklfjklsdaf',
+            'user' => 'fsjklfjklsdaf',
             'userKey' => 'fksdfklsdkflskdlf;',
         ]);
     }
@@ -114,7 +120,7 @@ class BaseTest extends TestCase
     public function Yilianyun()
     {
         return Factory::Yilianyun([
-            'client_id'     => 'fsdkalfjklsajdfk',
+            'client_id' => 'fsdkalfjklsajdfk',
             'client_secret' => 'sdaksldjaskldjaskljkl',
         ]);
     }
@@ -125,7 +131,7 @@ class BaseTest extends TestCase
     public function Zhongwuyun()
     {
         return Factory::Zhongwuyun([
-            'appid'     => '******',
+            'appid' => '******',
             'appsecret' => '******',
         ]);
     }

@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\cloudPrint\Xpyun;
 
 use Exception;
@@ -30,14 +38,15 @@ class XpyunClient extends BaseClient
     {
         $timestamp = Timer::timeStamp();
         $public_params = [
-            'user'      => $this->config['user'],
+            'user' => $this->config['user'],
             'timestamp' => $timestamp,
-            'sign'      => $this->getSign($timestamp),
+            'sign' => $this->getSign($timestamp),
         ];
         $params = array_filter(array_merge($public_params, $private_params));
-        $url = $this->config['host'] ?? $this->host.'/'.$action;
+        $url = $this->config['host'] ?? $this->host . '/' . $action;
         $resp = $this->httpPostJson($url, $params);
         $this->requestLog('POST:' . $url, $params, $resp);
+
         return $resp;
     }
 
@@ -48,6 +57,6 @@ class XpyunClient extends BaseClient
      */
     protected function getSign($timestamp)
     {
-        return sha1($this->config['user'].$this->config['userKey'].$timestamp);
+        return sha1($this->config['user'] . $this->config['userKey'] . $timestamp);
     }
 }

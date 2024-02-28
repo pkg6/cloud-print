@@ -1,12 +1,18 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
 
 namespace Pkg6\cloudPrint\Kernel;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use InvalidArgumentException;
-
 
 trait HttpClient
 {
@@ -15,7 +21,7 @@ trait HttpClient
      * @var array
      */
     protected $guzzleConfig = [
-        'headers'=>[
+        'headers' => [
             'User-Agent' => 'cloud-print (https://github.com/pkg6/cloud-print)',
         ]
     ];
@@ -24,14 +30,16 @@ trait HttpClient
      * @param string $url
      * @param array $query
      * @param array $headers
+     *
      * @return string
+     *
      * @throws GuzzleException
      */
     protected function httpGet(string $url, array $query = [], array $headers = [])
     {
         $options = [
             'headers' => $headers,
-            'query'   => $query,
+            'query' => $query,
         ];
 
         return $this->httpRequest('GET', $url, $options);
@@ -43,15 +51,16 @@ trait HttpClient
      * @param array $headers
      *
      * @return string
-     * @throws GuzzleException
      *
+     * @throws GuzzleException
      */
     protected function httpPost(string $url, array $params = [], array $headers = [])
     {
         $options = [
-            'headers'     => $headers,
+            'headers' => $headers,
             'form_params' => $params,
         ];
+
         return $this->httpRequest('POST', $url, $options);
     }
 
@@ -59,14 +68,16 @@ trait HttpClient
      * @param string $url
      * @param array $params
      * @param array $headers
+     *
      * @return string
+     *
      * @throws GuzzleException
      */
     protected function httpPostJson(string $url, array $params = [], array $headers = [])
     {
         $options = [
             'headers' => $headers,
-            'json'    => $params,
+            'json' => $params,
         ];
 
         return $this->httpRequest('POST', $url, $options);
@@ -78,8 +89,8 @@ trait HttpClient
      * @param $options
      *
      * @return string
-     * @throws GuzzleException
      *
+     * @throws GuzzleException
      */
     protected function httpRequest($method, $url, $options)
     {
@@ -93,9 +104,10 @@ trait HttpClient
      */
     protected function httpClient()
     {
-        if (!class_exists(Client::class)) {
+        if ( ! class_exists(Client::class)) {
             throw new InvalidArgumentException('Not installed guzzlehttp/guzzle');
         }
+
         return new Client(array_merge($this->config['http'], $this->guzzleConfig));
     }
 }

@@ -1,11 +1,17 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
 
 namespace Pkg6\cloudPrint\Tests\Feieyun;
 
 use Pkg6\cloudPrint\Feieyun\Printer;
 use Pkg6\cloudPrint\Tests\BaseTest;
-
 
 class PrinterTest extends BaseTest
 {
@@ -26,8 +32,8 @@ class PrinterTest extends BaseTest
     public function testUpdate()
     {
         $private_params = [
-            'sn'       => '',
-            'name'     => '',
+            'sn' => '',
+            'name' => '',
             'phonenum' => '',
         ];
         $this->methodPrivateParams('update', $private_params);
@@ -44,10 +50,10 @@ class PrinterTest extends BaseTest
     public function testLabelMsg()
     {
         $private_params = [
-            'sn'      => '',
+            'sn' => '',
             'content' => '',
-            'times'   => 1,
-            'img'     => '',
+            'times' => 1,
+            'img' => '',
         ];
         $this->methodPrivateParams('labelMsg', $private_params);
     }
@@ -55,9 +61,9 @@ class PrinterTest extends BaseTest
     public function testMsg()
     {
         $private_params = [
-            'sn'      => '',
+            'sn' => '',
             'content' => '',
-            'times'   => 1,
+            'times' => 1,
         ];
         $this->methodPrivateParams('msg', $private_params);
     }
@@ -81,7 +87,7 @@ class PrinterTest extends BaseTest
     public function testOrderInfoByDate()
     {
         $private_params = [
-            'sn'   => '',
+            'sn' => '',
             'date' => '',
         ];
         $this->methodPrivateParams('orderInfoByDate', $private_params);

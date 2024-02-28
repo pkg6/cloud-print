@@ -1,10 +1,17 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\cloudPrint\Tests\Jolimark;
 
 use Pkg6\cloudPrint\Jolimark\Printer;
 use Pkg6\cloudPrint\Tests\BaseTest;
-
 
 class PrinterTest extends BaseTest
 {
@@ -51,15 +58,15 @@ class PrinterTest extends BaseTest
     public function testHtml2Print()
     {
         $private_params = [
-            'device_ids'   => '',
-            'copies'       => '',
-            'cus_orderid'  => '',
+            'device_ids' => '',
+            'copies' => '',
+            'cus_orderid' => '',
             'bill_content' => '',
-            'paper_width'  => '',
+            'paper_width' => '',
             'paper_height' => '',
-            'paper_type'   => '',
-            'time_out'     => '',
-            'tex'          => '',
+            'paper_type' => '',
+            'time_out' => '',
+            'tex' => '',
         ];
         $this->methodPrivateParams('html2Print', $private_params);
     }
@@ -67,15 +74,15 @@ class PrinterTest extends BaseTest
     public function testHtmlPrint()
     {
         $private_params = [
-            'device_ids'   => '',
-            'copies'       => '',
-            'cus_orderid'  => '',
+            'device_ids' => '',
+            'copies' => '',
+            'cus_orderid' => '',
             'bill_content' => '',
-            'paper_width'  => '',
+            'paper_width' => '',
             'paper_height' => '',
-            'paper_type'   => '',
-            'time_out'     => '',
-            'tex'          => '',
+            'paper_type' => '',
+            'time_out' => '',
+            'tex' => '',
         ];
         $this->methodPrivateParams('htmlPrint', $private_params);
     }
@@ -83,14 +90,14 @@ class PrinterTest extends BaseTest
     public function testUrlPrint()
     {
         $private_params = [
-            'device_ids'   => '',
-            'copies'       => '',
-            'cus_orderid'  => '',
+            'device_ids' => '',
+            'copies' => '',
+            'cus_orderid' => '',
             'bill_content' => '',
-            'paper_width'  => '',
+            'paper_width' => '',
             'paper_height' => '',
-            'paper_type'   => '',
-            'time_out'     => '',
+            'paper_type' => '',
+            'time_out' => '',
         ];
         $this->methodPrivateParams('urlPrint', $private_params);
     }
@@ -98,14 +105,14 @@ class PrinterTest extends BaseTest
     public function testPicPrint()
     {
         $private_params = [
-            'device_ids'   => '',
-            'copies'       => '',
-            'cus_orderid'  => '',
+            'device_ids' => '',
+            'copies' => '',
+            'cus_orderid' => '',
             'bill_content' => '',
-            'paper_width'  => '',
+            'paper_width' => '',
             'paper_height' => '',
-            'paper_type'   => '',
-            'time_out'     => '',
+            'paper_type' => '',
+            'time_out' => '',
         ];
         $this->methodPrivateParams('picPrint', $private_params);
     }
@@ -113,14 +120,14 @@ class PrinterTest extends BaseTest
     public function testGrayPrint()
     {
         $private_params = [
-            'device_ids'   => '',
-            'copies'       => '',
-            'cus_orderid'  => '',
+            'device_ids' => '',
+            'copies' => '',
+            'cus_orderid' => '',
             'bill_content' => '',
-            'paper_width'  => '',
+            'paper_width' => '',
             'paper_height' => '',
-            'paper_type'   => '',
-            'time_out'     => '',
+            'paper_type' => '',
+            'time_out' => '',
         ];
         $this->methodPrivateParams('grayPrint', $private_params);
     }
@@ -128,14 +135,14 @@ class PrinterTest extends BaseTest
     public function testPrintEsc()
     {
         $private_params = [
-            'device_ids'   => '',
-            'copies'       => '',
-            'cus_orderid'  => '',
+            'device_ids' => '',
+            'copies' => '',
+            'cus_orderid' => '',
             'bill_content' => '',
-            'paper_width'  => '',
+            'paper_width' => '',
             'paper_height' => '',
-            'paper_type'   => '',
-            'time_out'     => '',
+            'paper_type' => '',
+            'time_out' => '',
         ];
         $this->methodPrivateParams('printEsc', $private_params);
     }
@@ -143,14 +150,14 @@ class PrinterTest extends BaseTest
     public function testPointTextPrint()
     {
         $private_params = [
-            'device_ids'   => '',
-            'copies'       => '',
-            'cus_orderid'  => '',
+            'device_ids' => '',
+            'copies' => '',
+            'cus_orderid' => '',
             'bill_content' => '',
-            'paper_width'  => '',
+            'paper_width' => '',
             'paper_height' => '',
-            'paper_type'   => '',
-            'time_out'     => '',
+            'paper_type' => '',
+            'time_out' => '',
         ];
         $this->methodPrivateParams('pointTextPrint', $private_params);
     }
@@ -158,14 +165,14 @@ class PrinterTest extends BaseTest
     public function testLabelPrint()
     {
         $private_params = [
-            'device_ids'   => '',
-            'copies'       => '',
-            'cus_orderid'  => '',
+            'device_ids' => '',
+            'copies' => '',
+            'cus_orderid' => '',
             'bill_content' => '',
-            'paper_width'  => '',
+            'paper_width' => '',
             'paper_height' => '',
-            'paper_type'   => '',
-            'time_out'     => '',
+            'paper_type' => '',
+            'time_out' => '',
         ];
         $this->methodPrivateParams('labelPrint', $private_params);
     }
@@ -173,21 +180,21 @@ class PrinterTest extends BaseTest
     public function testExpressPrint()
     {
         $private_params = [
-            'device_ids'  => '',
-            'copies'      => '',
+            'device_ids' => '',
+            'copies' => '',
             'cus_orderid' => '',
             'template_id' => '',
-            'jj_dwmc'     => '',
-            'jj_jjr'      => '',
-            'jj_lxdh'     => '',
-            'jj_dz'       => '',
-            'sj_dwmc'     => '',
-            'sj_sjr'      => '',
-            'sj_lxdh'     => '',
-            'sj_dz'       => '',
-            'wp_jtw'      => '',
-            'wp_smjz'     => '',
-            'time_out'    => '',
+            'jj_dwmc' => '',
+            'jj_jjr' => '',
+            'jj_lxdh' => '',
+            'jj_dz' => '',
+            'sj_dwmc' => '',
+            'sj_sjr' => '',
+            'sj_lxdh' => '',
+            'sj_dz' => '',
+            'wp_jtw' => '',
+            'wp_smjz' => '',
+            'time_out' => '',
         ];
         $this->methodPrivateParams('expressPrint', $private_params);
     }
@@ -195,13 +202,13 @@ class PrinterTest extends BaseTest
     public function testPrintTemp()
     {
         $private_params = [
-            'device_ids'   => '',
-            'template_id'  => '',
-            'copies'       => '',
-            'cus_orderid'  => '',
+            'device_ids' => '',
+            'template_id' => '',
+            'copies' => '',
+            'cus_orderid' => '',
             'bill_content' => '',
-            'paper_type'   => '',
-            'time_out'     => '',
+            'paper_type' => '',
+            'time_out' => '',
         ];
         $this->methodPrivateParams('printTemp', $private_params);
     }
@@ -209,14 +216,14 @@ class PrinterTest extends BaseTest
     public function testFilePrint()
     {
         $private_params = [
-            'device_ids'   => '',
-            'copies'       => '',
-            'cus_orderid'  => '',
+            'device_ids' => '',
+            'copies' => '',
+            'cus_orderid' => '',
             'bill_content' => '',
-            'paper_width'  => '',
+            'paper_width' => '',
             'paper_height' => '',
-            'paper_type'   => '',
-            'time_out'     => '',
+            'paper_type' => '',
+            'time_out' => '',
         ];
         $this->methodPrivateParams('filePrint', $private_params);
     }
@@ -224,15 +231,15 @@ class PrinterTest extends BaseTest
     public function testFileByUrlPrint()
     {
         $private_params = [
-            'device_ids'     => '',
-            'copies'         => '',
-            'cus_orderid'    => '',
-            'file_type'      => '',
-            'bill_content'   => '',
-            'paper_width'    => '',
-            'paper_height'   => '',
-            'paper_type'     => '',
-            'time_out'       => '',
+            'device_ids' => '',
+            'copies' => '',
+            'cus_orderid' => '',
+            'file_type' => '',
+            'bill_content' => '',
+            'paper_width' => '',
+            'paper_height' => '',
+            'paper_type' => '',
+            'time_out' => '',
         ];
         $this->methodPrivateParams('fileByUrlPrint', $private_params);
     }
@@ -240,11 +247,11 @@ class PrinterTest extends BaseTest
     public function testInvoicePrint()
     {
         $private_params = [
-            'device_ids'   => '',
-            'copies'       => '',
-            'cus_orderid'  => '',
+            'device_ids' => '',
+            'copies' => '',
+            'cus_orderid' => '',
             'bill_content' => '',
-            'time_out'     => '',
+            'time_out' => '',
         ];
         $this->methodPrivateParams('invoicePrint', $private_params);
     }

@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\cloudPrint\Jolimark;
 
 use Exception;
@@ -27,13 +35,13 @@ class JolimarkClient extends BaseClient
      * @param $private_params
      *
      * @return string
-     * @throws Exception
      *
+     * @throws Exception
      * @throws GuzzleException
      */
     public function request($method, $action, $private_params)
     {
-        $url           = $this->config['host'] ?? $this->host . $action;
+        $url = $this->config['host'] ?? $this->host . $action;
         $public_params = [
             'app_id' => $this->config['app_id'],
         ];
@@ -46,13 +54,14 @@ class JolimarkClient extends BaseClient
             'form_params' => $params,
         ]);
         $this->requestLog($method . ':' . $url, $params, $resp);
+
         return $resp;
     }
 
     /**
      * @return string
-     * @throws Exception
      *
+     * @throws Exception
      * @throws GuzzleException
      */
     protected function accessToken()
@@ -62,14 +71,14 @@ class JolimarkClient extends BaseClient
         if ($this->app->cache->hasCache($key)) {
             return $this->app->cache->getCache($key);
         }
-        $time   = Timer::timeStamp();
+        $time = Timer::timeStamp();
         $params = [
             'time_stamp' => $time,
-            'sign'       => $this->sign($time),
-            'sign_type'  => 'MD5',
+            'sign' => $this->sign($time),
+            'sign_type' => 'MD5',
         ];
-        $resp   = $this->request('GET', 'mcp/v2/sys/GetAccessToken', $params);
-        $data   = json_decode($resp, true);
+        $resp = $this->request('GET', 'mcp/v2/sys/GetAccessToken', $params);
+        $data = json_decode($resp, true);
         if (empty($data['return_data']['access_token'])) {
             return $resp;
         }
@@ -86,10 +95,10 @@ class JolimarkClient extends BaseClient
     protected function sign($timestamp)
     {
         $str = http_build_query([
-            'app_id'     => $this->config['app_id'],
-            'sign_type'  => $this->signType,
+            'app_id' => $this->config['app_id'],
+            'sign_type' => $this->signType,
             'time_stamp' => $timestamp,
-            'key'        => $this->config['app_key'],
+            'key' => $this->config['app_key'],
         ]);
 
         return strtoupper(md5($str));

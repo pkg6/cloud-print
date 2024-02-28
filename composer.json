@@ -36,7 +36,8 @@
   },
   "require-dev": {
     "phpunit/phpunit": "^6|^7|^8|^9",
-    "mockery/mockery": "^1.2.3"
+    "mockery/mockery": "^1.2.3",
+    "friendsofphp/php-cs-fixer": "^3.9"
   },
   "autoload": {
     "psr-4": {
@@ -47,5 +48,16 @@
     "psr-4": {
       "Pkg6\\cloudPrint\\Tests\\": "tests/"
     }
+  },
+  "scripts": {
+    "fresh": [
+      "rm -rf vendor composer.lock",
+      "composer install"
+    ],
+    "tests": [
+      "php ./vendor/bin/phpunit"
+    ],
+    "fixer": "vendor/bin/php-cs-fixer fix",
+    "try-fixer": "vendor/bin/php-cs-fixer fix --diff --dry-run"
   }
 }
