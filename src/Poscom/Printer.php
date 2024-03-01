@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\cloudPrint\Poscom;
 
 use GuzzleHttp\Exception\GuzzleException;
@@ -50,7 +58,7 @@ class Printer extends PoscomClient implements PrinterInterface
      */
     public function updateGroup($private_params)
     {
-//        return $this->request('POST', 'apisc/editgroup', $private_params);
+        //        return $this->request('POST', 'apisc/editgroup', $private_params);
     }
 
     /**
@@ -64,7 +72,7 @@ class Printer extends PoscomClient implements PrinterInterface
      */
     public function delGroup($private_params)
     {
-//        return $this->request('POST', 'apisc/delgroup', $private_params);
+        //        return $this->request('POST', 'apisc/delgroup', $private_params);
     }
 
     /**
@@ -177,7 +185,7 @@ class Printer extends PoscomClient implements PrinterInterface
      */
     public function clean($private_params)
     {
-//        return $this->request('POST', 'apisc/cancelPrint', $private_params);
+        //        return $this->request('POST', 'apisc/cancelPrint', $private_params);
     }
 
     /**

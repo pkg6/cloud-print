@@ -1,13 +1,21 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\cloudPrint\Kernel;
 
 use Pimple\Container;
 use Pkg6\Cache\cache\driver\File;
 
-
 /**
- * Class ServiceContainer
+ * Class ServiceContainer.
+ *
  * @property Clients\CacheClient cache
  * @property Clients\LoggerClient logger
  */
@@ -46,19 +54,19 @@ class ServiceContainer extends Container
     {
         $base = [
             // http://docs.guzzlephp.org/en/stable/request-options.html
-            'http'  => [
+            'http' => [
                 'timeout' => 30.0,
             ],
             'cache' => [
-                "class"         => File::class,
-                'expire'        => 0,
-                'cache_subdir'  => true,
-                'prefix'        => '',
-                'path'          => '',
-                'hash_type'     => 'md5',
+                "class" => File::class,
+                'expire' => 0,
+                'cache_subdir' => true,
+                'prefix' => '',
+                'path' => '',
+                'hash_type' => 'md5',
                 'data_compress' => false,
-                'tag_prefix'    => 'tag:',
-                'serialize'     => [],
+                'tag_prefix' => 'tag:',
+                'serialize' => [],
             ],
 //            "cache"=>new File(),
 //            "logger" => [

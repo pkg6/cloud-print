@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\cloudPrint\Feieyun;
 
 use Exception;
@@ -22,23 +30,24 @@ class FeieyunClient extends BaseClient
      * @param array $private_params
      *
      * @return string
-     * @throws Exception
      *
+     * @throws Exception
      * @throws GuzzleException
      */
     public function request($action, array $private_params = [])
     {
-        $timestamp     = Timer::timeStamp();
+        $timestamp = Timer::timeStamp();
         $public_params = [
-            'user'    => $this->config['user'],
-            'stime'   => $timestamp,
-            'sig'     => $this->getSig($timestamp),
+            'user' => $this->config['user'],
+            'stime' => $timestamp,
+            'sig' => $this->getSig($timestamp),
             'apiname' => $action,
         ];
-        $url           = $this->config['host'] ?? $this->host;
-        $params        = array_filter(array_merge($public_params, $private_params));
-        $resp          = $this->httpPost($url, $params);
+        $url = $this->config['host'] ?? $this->host;
+        $params = array_filter(array_merge($public_params, $private_params));
+        $resp = $this->httpPost($url, $params);
         $this->requestLog('POST:' . $url, $params, $resp);
+
         return $resp;
     }
 
@@ -46,8 +55,8 @@ class FeieyunClient extends BaseClient
      * @param $timestamp
      *
      * @return string
-     * @throws Exception
      *
+     * @throws Exception
      */
     protected function getSig($timestamp)
     {

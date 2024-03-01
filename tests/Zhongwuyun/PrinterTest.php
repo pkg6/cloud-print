@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\cloudPrint\Tests\Zhongwuyun;
 
 use Pkg6\cloudPrint\Tests\BaseTest;
@@ -10,7 +18,7 @@ class PrinterTest extends BaseTest
     public function testStatus()
     {
         $private_params = [
-            'deviceid'     => '1111111',
+            'deviceid' => '1111111',
             'devicesecret' => '11111111',
         ];
         $this->methodPrivateParams('status', $private_params);
@@ -19,9 +27,9 @@ class PrinterTest extends BaseTest
     public function testOrderState()
     {
         $private_params = [
-            'deviceid'     => '1111111',
+            'deviceid' => '1111111',
             'devicesecret' => '11111111',
-            'dataid'       => '123',
+            'dataid' => '123',
         ];
         $this->methodPrivateParams('orderState', $private_params);
     }
@@ -29,7 +37,7 @@ class PrinterTest extends BaseTest
     public function testClean()
     {
         $private_params = [
-            'deviceid'     => '1111111',
+            'deviceid' => '1111111',
             'devicesecret' => '11111111',
         ];
         $this->methodPrivateParams('clean', $private_params);
@@ -46,9 +54,9 @@ class PrinterTest extends BaseTest
     public function testSetSound()
     {
         $private_params = [
-            'deviceid'     => '1111111',
+            'deviceid' => '1111111',
             'devicesecret' => '11111111',
-            'sound'        => 3,
+            'sound' => 3,
         ];
         $this->methodPrivateParams('setSound', $private_params);
     }
@@ -56,9 +64,9 @@ class PrinterTest extends BaseTest
     public function testSetVoice()
     {
         $private_params = [
-            'deviceid'     => '1111111',
+            'deviceid' => '1111111',
             'devicesecret' => '11111111',
-            'voice'        => base64_encode('.mp3'),
+            'voice' => base64_encode('.mp3'),
         ];
         $this->methodPrivateParams('setVoice', $private_params);
     }
@@ -66,9 +74,9 @@ class PrinterTest extends BaseTest
     public function testPrint()
     {
         $private_params = [
-            'deviceid'     => '1111111',
+            'deviceid' => '1111111',
             'devicesecret' => '11111111',
-            'printdata'    => '',
+            'printdata' => '',
         ];
         $this->methodPrivateParams('print', $private_params);
     }

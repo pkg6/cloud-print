@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\cloudPrint\Poscom;
 
 use Exception;
@@ -28,12 +36,12 @@ class PoscomClient extends BaseClient
      */
     public function request($method, $action, $private_params)
     {
-        $url = $this->config['host'] ?? $this->host.$action;
+        $url = $this->config['host'] ?? $this->host . $action;
         $reqTime = $this->time();
         $public_params = [
-            'reqTime'      => $reqTime,
+            'reqTime' => $reqTime,
             'securityCode' => $this->securityCode($reqTime),
-            'memberCode'   => $this->config['memberCode'],
+            'memberCode' => $this->config['memberCode'],
         ];
         $params = array_filter(array_merge($public_params, $private_params));
 
@@ -41,6 +49,7 @@ class PoscomClient extends BaseClient
             'form_params' => $params,
         ]);
         $this->requestLog($method . ':' . $url, $params, $resp);
+
         return $resp;
     }
 
@@ -51,7 +60,7 @@ class PoscomClient extends BaseClient
      */
     public function securityCode($reqTime)
     {
-        return md5($this->config['memberCode'].$reqTime.$this->config['apiKey']);
+        return md5($this->config['memberCode'] . $reqTime . $this->config['apiKey']);
     }
 
     /**

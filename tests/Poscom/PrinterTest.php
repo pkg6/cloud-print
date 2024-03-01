@@ -1,10 +1,17 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\cloudPrint\Tests\Poscom;
 
 use Pkg6\cloudPrint\Poscom\Printer;
 use Pkg6\cloudPrint\Tests\BaseTest;
-
 
 class PrinterTest extends BaseTest
 {
@@ -23,33 +30,33 @@ class PrinterTest extends BaseTest
         $this->methodPrivateParams('addGroup', $private_params);
     }
 
-//    public function testupdateGroup()
-//    {
-//        $private_params = [
-//            'grpID'   => '',
-//            'grpName' => '',
-//        ];
-//        $this->methodPrivateParams('updateGroup', $private_params);
-//    }
+    //    public function testupdateGroup()
+    //    {
+    //        $private_params = [
+    //            'grpID'   => '',
+    //            'grpName' => '',
+    //        ];
+    //        $this->methodPrivateParams('updateGroup', $private_params);
+    //    }
 
-//    public function testdelGroup()
-//    {
-//        $private_params = [
-//            'grpID'   => '',
-//            'grpName' => '',
-//        ];
-//        $this->methodPrivateParams('delGroup', $private_params);
-//    }
+    //    public function testdelGroup()
+    //    {
+    //        $private_params = [
+    //            'grpID'   => '',
+    //            'grpName' => '',
+    //        ];
+    //        $this->methodPrivateParams('delGroup', $private_params);
+    //    }
 
     public function testRegister()
     {
         $private_params = [
             'deviceID' => '',
-            'devName'  => '',
-            'grpID'    => '',
-            'mPhone'   => '',
-            'nPhone'   => '',
-            'cutting'  => '',
+            'devName' => '',
+            'grpID' => '',
+            'mPhone' => '',
+            'nPhone' => '',
+            'cutting' => '',
         ];
         $this->methodPrivateParams('register', $private_params);
     }
@@ -58,11 +65,11 @@ class PrinterTest extends BaseTest
     {
         $private_params = [
             'deviceID' => '',
-            'devName'  => '',
-            'grpID'    => '',
-            'mPhone'   => '',
-            'nPhone'   => '',
-            'cutting'  => '',
+            'devName' => '',
+            'grpID' => '',
+            'mPhone' => '',
+            'nPhone' => '',
+            'cutting' => '',
         ];
         $this->methodPrivateParams('update', $private_params);
     }
@@ -83,27 +90,27 @@ class PrinterTest extends BaseTest
         $this->methodPrivateParams('status', $private_params);
     }
 
-//    public function testclean()
-//    {
-//        $private_params = [
-//            'deviceID' => '',
-//            'all'      => '',
-//        ];
-//        $this->methodPrivateParams('clean', $private_params);
-//    }
+    //    public function testclean()
+    //    {
+    //        $private_params = [
+    //            'deviceID' => '',
+    //            'all'      => '',
+    //        ];
+    //        $this->methodPrivateParams('clean', $private_params);
+    //    }
 
     public function testPrint()
     {
         $private_params = [
-            'charset'   => '',
-            'deviceID'  => '',
+            'charset' => '',
+            'deviceID' => '',
             'msgDetail' => '',
-            'msgNo'     => '',
-            'reprint'   => '',
-            'multi'     => '',
-            'mode'      => '',
-            'times'     => '',
-            'voice'     => '',
+            'msgNo' => '',
+            'reprint' => '',
+            'multi' => '',
+            'mode' => '',
+            'times' => '',
+            'voice' => '',
         ];
         $this->methodPrivateParams('print', $private_params);
     }
@@ -120,7 +127,7 @@ class PrinterTest extends BaseTest
     {
         $private_params = [
             'deviceID' => '',
-            'volume'   => '',
+            'volume' => '',
         ];
         $this->methodPrivateParams('setVoice', $private_params);
     }
@@ -128,7 +135,7 @@ class PrinterTest extends BaseTest
     public function testSetVoiceType()
     {
         $private_params = [
-            'deviceID'  => '',
+            'deviceID' => '',
             'voiceType' => '',
         ];
         $this->methodPrivateParams('setVoiceType', $private_params);
@@ -142,19 +149,19 @@ class PrinterTest extends BaseTest
         $this->methodPrivateParams('listTemplate', $private_params);
     }
 
-//    public function testsetTempletPrint()
-//    {
-//        $private_params = [
-//            'deviceID'  => '',
-//            'templetID' => '',
-//            'tData'     => '',
-//            'charset'   => '',
-//            'msgNo'     => '',
-//            'reprint'   => '',
-//            'multi'     => '',
-//        ];
-//        $this->methodPrivateParams('setTempletPrint', $private_params);
-//    }
+    //    public function testsetTempletPrint()
+    //    {
+    //        $private_params = [
+    //            'deviceID'  => '',
+    //            'templetID' => '',
+    //            'tData'     => '',
+    //            'charset'   => '',
+    //            'msgNo'     => '',
+    //            'reprint'   => '',
+    //            'multi'     => '',
+    //        ];
+    //        $this->methodPrivateParams('setTempletPrint', $private_params);
+    //    }
 
     public function methodPrivateParams($method, $private_params)
     {

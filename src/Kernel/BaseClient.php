@@ -1,7 +1,14 @@
 <?php
 
-namespace Pkg6\cloudPrint\Kernel;
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
 
+namespace Pkg6\cloudPrint\Kernel;
 
 /**
  * Class BaseClient.
@@ -31,13 +38,14 @@ class BaseClient
      */
     public function __construct(ServiceContainer $app)
     {
-        $this->app    = $app;
+        $this->app = $app;
         $this->config = $app->getConfig();
         $this->_initialize();
     }
 
-    protected function _initialize(){}
-
+    protected function _initialize()
+    {
+    }
 
     /**
      * @param $message

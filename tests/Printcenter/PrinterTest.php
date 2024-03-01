@@ -1,10 +1,17 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\cloudPrint\Tests\Printcenter;
 
 use Pkg6\cloudPrint\Printcenter\Printer;
 use Pkg6\cloudPrint\Tests\BaseTest;
-
 
 class PrinterTest extends BaseTest
 {
@@ -27,7 +34,7 @@ class PrinterTest extends BaseTest
     public function testPrint()
     {
         $private_params = [
-            'deviceNo'     => '',
+            'deviceNo' => '',
             'printContent' => '',
         ];
         $this->methodPrivateParams('print', $private_params);
@@ -36,7 +43,7 @@ class PrinterTest extends BaseTest
     public function testOrderState()
     {
         $private_params = [
-            'deviceNo'   => '',
+            'deviceNo' => '',
             'orderindex' => '',
         ];
         $this->methodPrivateParams('orderState', $private_params);

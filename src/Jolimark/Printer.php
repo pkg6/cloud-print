@@ -1,10 +1,18 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\cloudPrint\Jolimark;
 
 use GuzzleHttp\Exception\GuzzleException;
-use UnexpectedValueException;
 use Pkg6\cloudPrint\Kernel\Interfaces\PrinterInterface;
+use UnexpectedValueException;
 
 /**
  * Class Printer.
@@ -84,43 +92,43 @@ class Printer extends JolimarkClient implements PrinterInterface
             case 1:
                 $resp = $this->urlPrint($private_params);
                 break;
-            //简单html
+                //简单html
             case 2:
                 $resp = $this->html2Print($private_params);
                 break;
-            //复杂url转图片
+                //复杂url转图片
             case 3:
                 $resp = $this->picPrint($private_params);
                 break;
-            //复杂url转灰度图
+                //复杂url转灰度图
             case 4:
                 $resp = $this->grayPrint($private_params);
                 break;
-            //映美模版
+                //映美模版
             case 5:
                 $resp = $this->printTemp($private_params);
                 break;
-            //坐标
+                //坐标
             case 6:
                 $resp = $this->pointTextPrint($private_params);
                 break;
-            //快递单
+                //快递单
             case 7:
                 $resp = $this->expressPrint($private_params);
                 break;
-            //打印复杂页面(html代码)
+                //打印复杂页面(html代码)
             case 8:
                 $resp = $this->htmlPrint($private_params);
                 break;
-            //打印ESC指令
+                //打印ESC指令
             case 9:
                 $resp = $this->printEsc($private_params);
                 break;
-            //打印本地文件
+                //打印本地文件
             case 10:
                 $resp = $this->filePrint($private_params);
                 break;
-            //打印远程文件
+                //打印远程文件
             case 11:
                 $resp = $this->fileByUrlPrint($private_params);
                 break;

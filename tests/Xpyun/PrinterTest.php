@@ -1,10 +1,17 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\cloudPrint\Tests\Xpyun;
 
 use Pkg6\cloudPrint\Tests\BaseTest;
 use Pkg6\cloudPrint\Xpyun\Printer;
-
 
 class PrinterTest extends BaseTest
 {
@@ -25,15 +32,15 @@ class PrinterTest extends BaseTest
     public function testMsg()
     {
         $private_params = [
-            'sn'        => '',
-            'content'   => '',
-            'copies'    => 1,
-            'voice'     => '',
-            'mode'      => '',
+            'sn' => '',
+            'content' => '',
+            'copies' => 1,
+            'voice' => '',
+            'mode' => '',
             'expiresIn' => '',
-            'payType'   => '',
-            'payMode'   => '',
-            'money'     => '',
+            'payType' => '',
+            'payMode' => '',
+            'money' => '',
         ];
         $this->methodPrivateParams('msg', $private_params);
     }
@@ -41,15 +48,15 @@ class PrinterTest extends BaseTest
     public function testLabelMsg()
     {
         $private_params = [
-            'sn'        => '',
-            'content'   => '',
-            'copies'    => 1,
-            'voice'     => '',
-            'mode'      => '',
+            'sn' => '',
+            'content' => '',
+            'copies' => 1,
+            'voice' => '',
+            'mode' => '',
             'expiresIn' => '',
-            'payType'   => '',
-            'payMode'   => '',
-            'money'     => '',
+            'payType' => '',
+            'payMode' => '',
+            'money' => '',
         ];
         $this->methodPrivateParams('labelMsg', $private_params);
     }
@@ -65,8 +72,8 @@ class PrinterTest extends BaseTest
     public function testUpdate()
     {
         $private_params = [
-            'sn'     => '',
-            'name'   => '',
+            'sn' => '',
+            'name' => '',
             'cardno' => '',
         ];
         $this->methodPrivateParams('update', $private_params);
@@ -91,7 +98,7 @@ class PrinterTest extends BaseTest
     public function testOrderInfoByDate()
     {
         $private_params = [
-            'sn'   => '',
+            'sn' => '',
             'date' => '',
         ];
         $this->methodPrivateParams('orderInfoByDate', $private_params);
@@ -116,7 +123,7 @@ class PrinterTest extends BaseTest
     public function testSetVoice()
     {
         $private_params = [
-            'sn'        => '',
+            'sn' => '',
             'voiceType' => '',
         ];
         $this->methodPrivateParams('setVoice', $private_params);
@@ -125,10 +132,10 @@ class PrinterTest extends BaseTest
     public function testPlayVoice()
     {
         $private_params = [
-            'sn'      => '',
+            'sn' => '',
             'payType' => '',
             'payMode' => '',
-            'money'   => '',
+            'money' => '',
         ];
         $this->methodPrivateParams('playVoice', $private_params);
     }

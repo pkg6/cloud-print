@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\cloudPrint\Yilianyun;
 
 use Exception;
@@ -22,33 +30,34 @@ class YilianyunClient extends BaseClient
      * @param $private_params
      *
      * @return string
-     * @throws Exception
      *
+     * @throws Exception
      * @throws GuzzleException
      */
     public function request($action, $private_params)
     {
-        $timestamp     = Timer::timeStamp();
+        $timestamp = Timer::timeStamp();
         $public_params = [
             'client_id' => $this->config['client_id'],
-            'sign'      => $this->sign($timestamp),
+            'sign' => $this->sign($timestamp),
             'timestamp' => $timestamp,
-            'id'        => $this->uuid(),
+            'id' => $this->uuid(),
         ];
         if ($action != 'oauth/oauth') {
             $public_params['access_token'] = $this->accessToken();
         }
-        $url    = $this->buildHost($action);
+        $url = $this->buildHost($action);
         $params = array_filter(array_merge($public_params, $private_params));
-        $resp   = $this->httpPost($url, $params);
+        $resp = $this->httpPost($url, $params);
         $this->requestLog('POST:' . $url, $params, $resp);
+
         return $resp;
     }
 
     /**
      * @return string
-     * @throws Exception
      *
+     * @throws Exception
      * @throws GuzzleException
      */
     protected function accessToken()
@@ -59,10 +68,10 @@ class YilianyunClient extends BaseClient
         }
         $params = [
             'grant_type' => 'client_credentials',
-            'scope'      => 'all',
+            'scope' => 'all',
         ];
-        $resp   = $this->request('oauth/oauth', $params);
-        $data   = json_decode($resp, true);
+        $resp = $this->request('oauth/oauth', $params);
+        $data = json_decode($resp, true);
         if (empty($data['body']['access_token'])) {
             return $resp;
         }
