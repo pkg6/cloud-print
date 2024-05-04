@@ -9,6 +9,12 @@
 
 
 
+## 安装
+
+~~~
+composer require pkg6/cloud-print
+~~~
+
 
 ## 请求日志开启
 ~~~
