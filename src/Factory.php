@@ -25,7 +25,6 @@ use InvalidArgumentException;
  * @method static Yilianyun\AppContainer Yilianyun($config)
  * @method static Jolimark\AppContainer Jolimark($config)
  * @method static Poscom\AppContainer Poscom($config)
- * @method static Printcenter\AppContainer Printcenter($config)
  * @method static Zhongwuyun\AppContainer Zhongwuyun($config)
  * @method static Ushengyun\AppContainer Ushengyun($config)
  */
