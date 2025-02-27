@@ -26,15 +26,6 @@ class UshengyunClient extends BaseClient
      */
     protected $host = 'https://open-api.ushengyun.com/printer';
 
-    /**
-     * @param $action
-     * @param $private_params
-     *
-     * @return string
-     *
-     * @throws Exception
-     * @throws GuzzleException
-     */
     public function request($action, $private_params)
     {
         $time = Timer::timeStamp();
@@ -43,14 +34,10 @@ class UshengyunClient extends BaseClient
             'timestamp' => $time,
         ];
         $params = array_filter(array_merge($public_params, $private_params));
-        $protocol['sign'] = $this->sign($params);
+        $params['sign'] = $this->sign($params);
         $url = $this->config['host'] ?? $this->host . '/' . $action;
-
-        $resp = $this->httpPostJson($url, [
-            'form_params' => $params,
-        ]);
+        $resp = $this->httpPostJson($url, $params);
         $this->requestLog('POST:' . $url, $params, $resp);
-
         return $resp;
     }
 
