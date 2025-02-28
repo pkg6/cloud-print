@@ -67,8 +67,9 @@ class YilianyunClient extends BaseClient
     protected function accessToken()
     {
         $key = md5($this->config['client_id'] . $this->config['client_secret']);
-        if ($this->app->cache->hasCache($key)) {
-            return $this->app->cache->getCache($key);
+        $access_token = $this->app->cache->getCache($key);
+        if (!empty($access_token)) {
+            return $access_token;
         }
         $params = [
             'grant_type' => 'client_credentials',
@@ -80,7 +81,6 @@ class YilianyunClient extends BaseClient
             return $resp;
         }
         $this->app->cache->setCache($key, $data['body']['access_token'], $data['body']['expires_in']);
-
         return $data['body']['access_token'];
     }
 
