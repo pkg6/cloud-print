@@ -41,26 +41,14 @@ class PoscomClient extends BaseClient
     public function request($method, $action, $private_params)
     {
         $url = $this->config['host'] ?? $this->host . $action;
-        $reqTime = $this->time();
         $public_params = [
-            'reqTime' => $reqTime,
-            'securityCode' => $this->securityCode($reqTime),
             'memberCode' => $this->config['memberCode'],
         ];
         $params = array_filter(array_merge($public_params, $private_params));
-
-        // 请求安全校验
-        $securityStr = $params['memberCode'] .  $params['reqTime'] . $this->config['apiKey'];
-        if(!empty($params['deviceID'])){
-            $securityStr .= $params['deviceID'];
-        }
-        $params['securityCode'] = md5($securityStr);
-
         $resp = $this->httpRequest($method, $url, [
             'form_params' => $params,
         ]);
         $this->requestLog($method . ':' . $url, $params, $resp);
-
         return $resp;
     }
 
