@@ -41,19 +41,14 @@ class PoscomClient extends BaseClient
     public function request($method, $action, $private_params)
     {
         $url = $this->config['host'] ?? $this->host . $action;
-        $reqTime = $this->time();
         $public_params = [
-            'reqTime' => $reqTime,
-            'securityCode' => $this->securityCode($reqTime),
             'memberCode' => $this->config['memberCode'],
         ];
         $params = array_filter(array_merge($public_params, $private_params));
-
         $resp = $this->httpRequest($method, $url, [
             'form_params' => $params,
         ]);
         $this->requestLog($method . ':' . $url, $params, $resp);
-
         return $resp;
     }
 
