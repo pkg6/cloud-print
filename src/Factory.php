@@ -47,7 +47,7 @@ class Factory
         if ( ! class_exists($app)) {
             throw new InvalidArgumentException('class not exists:' . $app);
         }
-        $instance = crc32($name . serialize($config));
+        $instance = crc32($name . md5(json_encode($config)));
         if ( ! isset(self::$instances[$instance])) {
             self::$instances[$instance] = new $app($config);
         }
