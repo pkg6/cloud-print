@@ -1,8 +1,19 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * (L) Licensed <https://opensource.org/license/MIT>
+ *
+ * (A) zhiqiang <https://www.zhiqiang.wang>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\CloudPrint\Feieyun;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Pkg6\CloudPrint\BaseClient;
 
 class Client extends BaseClient
@@ -23,7 +34,6 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return string
-     *
      */
     public function openRrinterAddlist($private_params)
     {
@@ -33,7 +43,6 @@ class Client extends BaseClient
      * 删除批量打印机，Open_printerDelList.
      *
      * @param $private_params
-     *
      *
      * @return string
      */
@@ -46,7 +55,6 @@ class Client extends BaseClient
      *
      * @param $private_params
      *
-     *
      * @return string
      */
     public function openPrinterEdit($private_params)
@@ -57,7 +65,6 @@ class Client extends BaseClient
      * 获取某台打印机状态，Open_queryPrinterStatus.
      *
      * @param $private_params
-     *
      *
      * @return string
      */
@@ -70,13 +77,13 @@ class Client extends BaseClient
         if ($type == 'label') {
             return $this->openPrintLabelMsg($private_params);
         }
+
         return $this->openPrintMsg($private_params);
     }
     /**
      * 打印订单，Open_printMsg.
      *
      * @param $private_params
-     *
      *
      * @return string
      */
@@ -88,7 +95,6 @@ class Client extends BaseClient
      * 标签机打印订单，Open_printLabelMsg.
      *
      * @param $private_params
-     *
      *
      * @return string
      */
@@ -102,7 +108,6 @@ class Client extends BaseClient
      *
      * @param $private_params
      *
-     *
      * @return string
      */
     public function openDelPrinterSqs($private_params)
@@ -113,7 +118,6 @@ class Client extends BaseClient
      * 查询订单是否打印成功，Open_queryOrderState.
      *
      * @param $private_params
-     *
      *
      * @return string
      */
@@ -126,7 +130,6 @@ class Client extends BaseClient
      * 查询指定打印机某天的订单统计数，Open_queryOrderInfoByDate.
      *
      * @param $private_params
-     *
      *
      * @return string
      */

@@ -1,5 +1,17 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * (L) Licensed <https://opensource.org/license/MIT>
+ *
+ * (A) zhiqiang <https://www.zhiqiang.wang>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\CloudPrint\Feieyun;
 
 trait ReqTrait
@@ -15,6 +27,7 @@ trait ReqTrait
         ];
         $url = $this->config['host'] ?? $this->host;
         $params = array_filter(array_merge($public_params, $private_params));
+
         return $this->httpPost($url, $params);
     }
 

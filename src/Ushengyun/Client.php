@@ -1,8 +1,19 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * (L) Licensed <https://opensource.org/license/MIT>
+ *
+ * (A) zhiqiang <https://www.zhiqiang.wang>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\CloudPrint\Ushengyun;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Pkg6\CloudPrint\BaseClient;
 
 class Client extends BaseClient
@@ -24,7 +35,6 @@ class Client extends BaseClient
      *
      * @param $private_params
      *
-     *
      * @return mixed
      */
     public function status($private_params)
@@ -36,6 +46,7 @@ class Client extends BaseClient
      * 打印.
      *
      * @param $private_params
+     *
      * @return mixed
      */
     public function print($private_params)
@@ -46,7 +57,6 @@ class Client extends BaseClient
      * 清空待打印队列.
      *
      * @param $private_params
-     *
      *
      * @return mixed
      */
@@ -60,7 +70,6 @@ class Client extends BaseClient
      *
      * @param $private_params
      *
-     *
      * @return mixed
      */
     public function cancelOne($private_params)
@@ -72,7 +81,6 @@ class Client extends BaseClient
      * 查询订单是否打印成功
      *
      * @param $private_params
-     *
      *
      * @return mixed
      */
@@ -86,7 +94,6 @@ class Client extends BaseClient
      *
      * @param $private_params
      *
-     *
      * @return string
      */
     public function sound($private_params)
@@ -96,7 +103,6 @@ class Client extends BaseClient
 
     /**
      * @param $private_params
-     *
      *
      * @return bool|string
      */

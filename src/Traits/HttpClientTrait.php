@@ -44,21 +44,25 @@ trait HttpClientTrait
 
     /**
      * @param \Psr\Log\LoggerInterface $logger
+     *
      * @return  $this
      */
     public function setRequestLogger(LoggerInterface $logger)
     {
         $this->logger = $logger;
+
         return $this;
     }
 
     /**
      * @param string $logFormatter
+     *
      * @return $this
      */
     public function setLogFormatter(string $logFormatter)
     {
         $this->logFormatter = $logFormatter;
+
         return $this;
     }
 
@@ -67,10 +71,10 @@ trait HttpClientTrait
         if ($this->logFormatter) {
             return $this->logFormatter;
         }
+
         return "ReqTrait:\n{method} {uri} HTTP/{version}\nHeaders: {req_headers}\nBody: {req_body}\n\n" .
             "Response:\nStatus: {code}\nHeaders: {res_headers}\nBody: {res_body}";
     }
-
 
     /**
      * @param string $url
@@ -154,6 +158,7 @@ trait HttpClientTrait
         if ($this->logger) {
             $stack->push(Middleware::log($this->logger, new MessageFormatter($this->getLogFormatter())));
         }
+
         return new Client(['handler' => $stack]);
     }
 }

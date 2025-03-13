@@ -1,11 +1,24 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * (L) Licensed <https://opensource.org/license/MIT>
+ *
+ * (A) zhiqiang <https://www.zhiqiang.wang>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\CloudPrint\Poscom;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Pkg6\CloudPrint\BaseClient;
+
 /**
- * https://dev.poscom.cn
+ * https://dev.poscom.cn.
  */
 class Client extends BaseClient
 {
@@ -48,8 +61,6 @@ class Client extends BaseClient
     {
         return $this->request('POST', 'apisc/addgroup', $private_params);
     }
-
-
 
     /**
      * 添加打印机.
@@ -139,14 +150,15 @@ class Client extends BaseClient
      * 打印.
      *
      * @param $private_params
+     *
      * @return mixed
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function sendMsg($private_params)
     {
         return $this->request('POST', 'apisc/sendMsg', $private_params);
     }
-
 
     /**
      * 查询订单是否打印成功

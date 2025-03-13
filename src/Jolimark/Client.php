@@ -1,5 +1,17 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * (L) Licensed <https://opensource.org/license/MIT>
+ *
+ * (A) zhiqiang <https://www.zhiqiang.wang>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\CloudPrint\Jolimark;
 
 use GuzzleHttp\Exception\GuzzleException;
@@ -31,6 +43,7 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return mixed
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Psr\SimpleCache\InvalidArgumentException
      */
@@ -45,8 +58,8 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return string
-     * @throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      *
+     * @throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function checkPrinterEnableBind($private_params)
     {
@@ -59,6 +72,7 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return mixed
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Psr\SimpleCache\InvalidArgumentException
      */
@@ -73,8 +87,8 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return mixed
-     * @throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      *
+     * @throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function queryPrinterStatus($private_params)
     {
@@ -88,8 +102,8 @@ class Client extends BaseClient
      * @param $type
      *
      * @return mixed
-     * @throws GuzzleException
      *
+     * @throws GuzzleException
      */
     public function print($private_params, $type)
     {
@@ -98,49 +112,50 @@ class Client extends BaseClient
             case 1:
                 $resp = $this->printHtmlUrl($private_params);
                 break;
-            //简单html
+                //简单html
             case 2:
                 $resp = $this->printHtmlCode($private_params);
                 break;
-            //复杂url转图片
+                //复杂url转图片
             case 3:
                 $resp = $this->printHtmlToPic($private_params);
                 break;
-            //复杂url转灰度图
+                //复杂url转灰度图
             case 4:
                 $resp = $this->printHtmlToGrayPic($private_params);
                 break;
-            //映美模版
+                //映美模版
             case 5:
                 $resp = $this->printHtmlTemplate($private_params);
                 break;
-            //坐标
+                //坐标
             case 6:
                 $resp = $this->printPointText($private_params);
                 break;
-            //快递单
+                //快递单
             case 7:
                 $resp = $this->printExpress($private_params);
                 break;
-            //打印复杂页面(html代码)
+                //打印复杂页面(html代码)
             case 8:
                 $resp = $this->printRichHtmlCode($private_params);
                 break;
-            //打印ESC指令
+                //打印ESC指令
             case 9:
                 $resp = $this->printEsc($private_params);
                 break;
-            //打印本地文件
+                //打印本地文件
             case 10:
                 $resp = $this->printFile($private_params);
                 break;
-            //打印远程文件
+                //打印远程文件
             case 11:
                 $resp = $this->fileByUrlPrint($private_params);
                 break;
             default:
                 throw new UnexpectedValueException("{$type} Command not entered");
         }
+
         return $resp;
     }
     /**
@@ -149,8 +164,8 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return string
-     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      *
+     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function printHtmlUrl($private_params)
     {
@@ -163,8 +178,8 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return string
-     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      *
+     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function printHtmlToPic($private_params)
     {
@@ -177,8 +192,8 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return string
-     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      *
+     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function printHtmlCode($private_params)
     {
@@ -191,8 +206,8 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return string
-     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      *
+     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function printRichHtmlCode($private_params)
     {
@@ -205,8 +220,8 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return string
-     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      *
+     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function printHtmlToGrayPic($private_params)
     {
@@ -219,8 +234,8 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return string
-     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      *
+     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function printPointText($private_params)
     {
@@ -231,8 +246,8 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return string
-     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      *
+     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function printLabel($private_params)
     {
@@ -245,8 +260,8 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return string
-     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      *
+     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function printExpress($private_params)
     {
@@ -259,8 +274,8 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return string
-     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      *
+     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function printHtmlTemplate($private_params)
     {
@@ -273,8 +288,8 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return string
-     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      *
+     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function printEsc($private_params)
     {
@@ -287,8 +302,8 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return string
-     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      *
+     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function printFile($private_params)
     {
@@ -301,8 +316,8 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return string
-     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      *
+     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function fileByUrlPrint($private_params)
     {
@@ -315,8 +330,8 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return string
-     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      *
+     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function printInvoice($private_params)
     {
@@ -329,8 +344,8 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return mixed
-     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      *
+     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function cancelNotPrintTask($private_params)
     {
@@ -343,8 +358,8 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return mixed
-     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      *
+     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function queryPrintTaskStatus($private_params)
     {
@@ -357,8 +372,8 @@ class Client extends BaseClient
      * @param $private_params
      *
      * @return string
-     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      *
+     *@throws GuzzleException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function queryNotPrintTask($private_params)
     {

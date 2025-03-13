@@ -1,5 +1,17 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * (L) Licensed <https://opensource.org/license/MIT>
+ *
+ * (A) zhiqiang <https://www.zhiqiang.wang>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\CloudPrint\Yilianyun;
 
 use Exception;
@@ -30,6 +42,7 @@ trait ReqTrait
         }
         $url = $this->buildHost($action);
         $params = array_filter(array_merge($public_params, $private_params));
+
         return $this->httpPost($url, $params);
     }
 
@@ -43,7 +56,7 @@ trait ReqTrait
     {
         $key = md5($this->config['client_id'] . $this->config['client_secret']);
         $access_token = $this->cache()?->get($key);
-        if (!empty($access_token)) {
+        if ( ! empty($access_token)) {
             return $access_token;
         }
         $params = [
@@ -56,6 +69,7 @@ trait ReqTrait
             return $resp;
         }
         $this->cache()?->set($key, $data['body']['access_token'], $data['body']['expires_in']);
+
         return $data['body']['access_token'];
     }
 

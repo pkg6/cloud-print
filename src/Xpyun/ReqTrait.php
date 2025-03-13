@@ -1,5 +1,17 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * (L) Licensed <https://opensource.org/license/MIT>
+ *
+ * (A) zhiqiang <https://www.zhiqiang.wang>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\CloudPrint\Xpyun;
 
 use Exception;
@@ -12,8 +24,8 @@ trait ReqTrait
      * @param $private_params
      *
      * @return string
-     * @throws Exception
      *
+     * @throws Exception
      * @throws GuzzleException
      */
     public function request($action, $private_params)
@@ -26,6 +38,7 @@ trait ReqTrait
         ];
         $params = array_filter(array_merge($public_params, $private_params));
         $url = $this->config['host'] ?? $this->host . '/' . $action;
+
         return $this->httpPostJson($url, $params);
     }
 
