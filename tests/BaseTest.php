@@ -14,8 +14,11 @@
 
 namespace Pkg6\CloudPrint\Tests;
 
+use Mockery;
+use Mockery\Mock;
 use PHPUnit\Framework\TestCase;
 use Pkg6\CloudPrint\CloudPrint;
+use Pkg6\CloudPrint\Contracts\ClientInterface;
 use Pkg6\CloudPrint\Factory;
 
 class BaseTest extends TestCase
@@ -122,6 +125,15 @@ class BaseTest extends TestCase
             'appid' => '******',
             'appsecret' => '******',
         ]);
+    }
+
+    /**
+     * @param \Pkg6\CloudPrint\Contracts\ClientInterface $client
+     * @return Mock
+     */
+    public function mockApiClient(ClientInterface $client)
+    {
+        return Mockery::mock($client)->makePartial();
     }
 
     public function newCloudPrint()
