@@ -15,24 +15,129 @@
 composer require pkg6/cloud-print
 ~~~
 
-
-## 请求日志开启
-~~~
-\Pkg6\CloudPrint\Kernel\BaseClient::$request_log=true;
-~~~
-
 ## 自定义缓存
 
 > 基于https://packagist.org/packages/psr/simple-cache#1.0
+>
+> ```
+> public function setCache(CacheInterface $cache);
+> ```
+
+## 自定义日志
+
+> 基于 https://packagist.org/packages/psr/log
+>
+> ```
+> public function setRequestLogger(LoggerInterface $logger)
+> ```
+
+## 适配模式
+
+> 需要定义的服务商实现客户端
+>
+> ```
+> interface ClientInterface
+> {
+>     public function setCache(CacheInterface $cache);
+>     /**
+>      * @param \Psr\Log\LoggerInterface $logger
+>      * @return $this
+>      */
+>     public function setRequestLogger(LoggerInterface $logger);
+> 
+>     /**
+>      * @param string $logFormatter
+>      * @return $this
+>      * @see MessageFormatter
+>      */
+>     public function setLogFormatter(string $logFormatter);
+> 
+>     /**
+>      * @param $requestUrl
+>      * @return $this
+>      */
+>     public function setRequestUrl($requestUrl);
+> 
+>     /**
+>      * @return string
+>      */
+>     public function getRequestUrl();
+> 
+>     /**
+>      * @param $method
+>      * @param $action
+>      * @param $privateParams
+>      * @return mixed
+>      */
+>     public function request($method, $action, $privateParams);
+> }
+> ```
+
+### 配置
 
 ~~~
-$printer = \Pkg6\CloudPrint\Factory::Feieyun([
-    'user' => '',
-    'ukey' => '',
-]);
+$config =[
+    // 默认发送配置
+    'default' => "feieyun",
+    // 可用的网关配置
+    'clients' => [
+        "feieyun" => [
+            "type" => 'feieyun',
+            'user' => "",
+            'ukey' => "",
+        ],
+        'jolimark' => [
+            "type" => 'jolimark',
+            'app_id' => "",
+            'app_key' => "",
+        ],
+        // 需要自己setRequestUrl传入url
+        'kuaidi100' => [
+            "type" => 'kuaidi100',
+            'key' => "",
+            'secret' => "",
+        ],
+        'poscom' => [
+            "type" => 'poscom',
+            'memberCode' => "",
+            'apiKey' => "",
+        ],
+        'ushengyun' => [
+            "type" => 'ushengyun',
+            'appId' => "",
+            'appSecret' => "",
+        ],
+        'xpyun' => [
+            "type" => 'xpyun',
+            "user" => "",
+            "userKey" => "",
+        ],
+        'yilianyun' => [
+            "type" => 'yilianyun',
+            'client_id' => "",
+            'client_secret' => "",
+        ],
+        'zhongwuyun' => [
+            "type" => 'zhongwuyun',
+            'appid' => "",
+            'appsecret' => "",
+        ],
+    ],
 ~~~
 
-## 案例
+### 实例化
+
+~~~
+$cloudPrint = new CloudPrint($config)
+//自定义驱动
+$cloudPrint->client("zhongwuyun")->request($method, $action, $privateParams)
+//默认驱动
+$cloudPrint->request($method, $action, $privateParams)
+~~~
+
+## 门脸模式
+
+> 可以直接到实现请求的客户端，内置很多方法可以供使用
 
 ### 基于[中午云](http://www.zhongwu.co/)的 PHP 接口组件
 

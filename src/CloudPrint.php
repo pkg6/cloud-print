@@ -19,6 +19,9 @@ use Pkg6\CloudPrint\Contracts\ClientInterface;
 
 class CloudPrint
 {
+    /**
+     * @var string[]
+     */
     protected $clientTable = [
         'feieyun' => Feieyun\Client::class,
         'jolimark' => Jolimark\Client::class,
@@ -30,8 +33,14 @@ class CloudPrint
         'zhongwuyun' => Zhongwuyun\Client::class,
     ];
 
+    /**
+     * @var array
+     */
     protected $clients = [];
 
+    /**
+     * @var array
+     */
     protected $config = [];
 
     public function __construct(array $config = [])
@@ -39,6 +48,11 @@ class CloudPrint
         $this->config = array_merge($this->config, $config);
     }
 
+    /**
+     * @param $name
+     *
+     * @return \Pkg6\CloudPrint\Contracts\ClientInterface
+     */
     public function client($name = "")
     {
         $name = $name ?: $this->getDefaultDriver();
@@ -81,7 +95,7 @@ class CloudPrint
      *
      * @param string $name
      *
-     * @return mixed
+     * @return \Pkg6\CloudPrint\Contracts\ClientInterface
      */
     protected function createClient($name)
     {
@@ -92,11 +106,21 @@ class CloudPrint
         return new $class($config);
     }
 
+    /**
+     * @param $name
+     *
+     * @return string
+     */
     protected function resolveType($name)
     {
         return $this->config['clients'][$name]['type'];
     }
 
+    /**
+     * @param $type
+     *
+     * @return string
+     */
     public function resolveClass($type)
     {
         if (class_exists($type)) {
@@ -108,6 +132,11 @@ class CloudPrint
         throw new InvalidArgumentException("client [$type] not supported.");
     }
 
+    /**
+     * @param $type
+     *
+     * @return mixed
+     */
     public function resolveConfig($type)
     {
         return $this->config['clients'][$type];
