@@ -16,9 +16,12 @@ namespace Pkg6\CloudPrint\Jolimark;
 
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
+use Pkg6\CloudPrint\Traits\ReqBT;
 
 trait ReqTrait
 {
+    use ReqBT;
+
     /**
      * @param $method
      * @param $action
@@ -31,7 +34,7 @@ trait ReqTrait
      */
     public function request($method, $action, $private_params)
     {
-        $url = $this->config['host'] ?? $this->host . $action;
+        $url = $this->getRequestUrl() . $action;
         $public_params = [
             'app_id' => $this->config['app_id'],
         ];

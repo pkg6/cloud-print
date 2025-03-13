@@ -14,16 +14,11 @@
 
 namespace Pkg6\CloudPrint\Kuaidi100;
 
+use Pkg6\CloudPrint\Traits\ReqBT;
+
 trait ReqTrait
 {
-    protected $_requestUrl;
-
-    public function setRequestUrl($requestUrl)
-    {
-        $this->_requestUrl = $requestUrl;
-
-        return $this;
-    }
+    use ReqBT;
 
     /**
      * @param $action
@@ -35,6 +30,7 @@ trait ReqTrait
      */
     public function request($action, $private_params)
     {
+        $url = $this->getRequestUrl();
         $timestamp = time();
         $params = [
             'method' => $action,
@@ -44,9 +40,9 @@ trait ReqTrait
             'param' => json_encode($private_params),
         ];
         if ($action == 'imgOrder') {
-            return $this->httpGet($this->_requestUrl, $params, ['Content-Type' => 'multipart/form-data']);
+            return $this->httpGet($url, $params, ['Content-Type' => 'multipart/form-data']);
         } else {
-            return $this->httpPost($this->_requestUrl, $params);
+            return $this->httpPost($url, $params);
         }
     }
     protected function sign($param, $t)

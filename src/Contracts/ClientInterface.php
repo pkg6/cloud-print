@@ -16,5 +16,9 @@ namespace Pkg6\CloudPrint\Contracts;
 
 interface ClientInterface
 {
+    public function setRequestUrl($requestUrl);
+
+    public function getRequestUrl();
+
     public function request($method, $action, $privateParams);
 }

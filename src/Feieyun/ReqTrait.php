@@ -14,8 +14,12 @@
 
 namespace Pkg6\CloudPrint\Feieyun;
 
+use Pkg6\CloudPrint\Traits\ReqBT;
+
 trait ReqTrait
 {
+    use ReqBT;
+
     public function request($method, $action, array $private_params = [])
     {
         $timestamp = time();
@@ -25,7 +29,7 @@ trait ReqTrait
             'sig' => $this->getSig($timestamp),
             'apiname' => $action,
         ];
-        $url = $this->config['host'] ?? $this->host;
+        $url = $this->getRequestUrl();
         $params = array_filter(array_merge($public_params, $private_params));
 
         return $this->httpPost($url, $params);

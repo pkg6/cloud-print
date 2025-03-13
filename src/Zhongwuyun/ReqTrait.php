@@ -14,20 +14,20 @@
 
 namespace Pkg6\CloudPrint\Zhongwuyun;
 
-use Exception;
-use GuzzleHttp\Exception\GuzzleException;
+use Pkg6\CloudPrint\Traits\ReqBT;
 
 trait ReqTrait
 {
+    use ReqBT;
+
     /**
+     * @param $method
      * @param $action
      * @param $private_params
-     * @param bool $is_get
      *
      * @return string
      *
-     * @throws Exception
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function request($method, $action, $private_params)
     {
@@ -37,7 +37,7 @@ trait ReqTrait
         ];
         $params = array_filter(array_merge($public_params, $private_params));
         $params['sign'] = $this->sign($params);
-        $url = $this->config['host'] ?? $this->host . '/' . $action;
+        $url = $this->getRequestUrl() . '/' . $action;
         if ($method == "get" || $method == "GET") {
             return $this->httpGet($url, $params);
         } else {

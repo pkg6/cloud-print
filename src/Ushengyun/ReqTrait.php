@@ -14,8 +14,12 @@
 
 namespace Pkg6\CloudPrint\Ushengyun;
 
+use Pkg6\CloudPrint\Traits\ReqBT;
+
 trait ReqTrait
 {
+    use ReqBT;
+
     public function request($method, $action, $private_params)
     {
         $time = time();
@@ -25,7 +29,7 @@ trait ReqTrait
         ];
         $params = array_filter(array_merge($public_params, $private_params));
         $params['sign'] = $this->sign($params);
-        $url = $this->config['host'] ?? $this->host . '/' . $action;
+        $url = $this->getRequestUrl() . '/' . $action;
 
         return $this->httpPostJson($url, $params);
     }

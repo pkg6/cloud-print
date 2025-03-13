@@ -14,19 +14,20 @@
 
 namespace Pkg6\CloudPrint\Xpyun;
 
-use Exception;
-use GuzzleHttp\Exception\GuzzleException;
+use Pkg6\CloudPrint\Traits\ReqBT;
 
 trait ReqTrait
 {
+    use ReqBT;
+
     /**
+     * @param $method
      * @param $action
      * @param $private_params
      *
      * @return string
      *
-     * @throws Exception
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function request($method, $action, $private_params)
     {
@@ -37,7 +38,7 @@ trait ReqTrait
             'sign' => $this->getSign($timestamp),
         ];
         $params = array_filter(array_merge($public_params, $private_params));
-        $url = $this->config['host'] ?? $this->host . '/' . $action;
+        $url = $this->getRequestUrl() . '/' . $action;
 
         return $this->httpPostJson($url, $params);
     }

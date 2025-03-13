@@ -16,9 +16,12 @@ namespace Pkg6\CloudPrint\Yilianyun;
 
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
+use Pkg6\CloudPrint\Traits\ReqBT;
 
 trait ReqTrait
 {
+    use ReqBT;
+
     /**
      * @param $method
      * @param $action
@@ -54,7 +57,7 @@ trait ReqTrait
      */
     protected function accessToken()
     {
-        $key = md5($this->config['client_id'] . $this->config['client_secret']);
+        $key = $this->config['client_id'] . ":" . $this->config['client_secret'];
         $access_token = $this->cache()?->get($key);
         if ( ! empty($access_token)) {
             return $access_token;
@@ -63,7 +66,7 @@ trait ReqTrait
             'grant_type' => 'client_credentials',
             'scope' => 'all',
         ];
-        $resp = $this->request('oauth/oauth', $params);
+        $resp = $this->request("", 'oauth/oauth', $params);
         $data = json_decode($resp, true);
         if (empty($data['body']['access_token'])) {
             return $resp;
@@ -80,7 +83,7 @@ trait ReqTrait
      */
     protected function buildHost($action)
     {
-        return $this->config['host'] ?? $this->host . $action;
+        return $this->getRequestUrl() . $action;
     }
 
     /**
