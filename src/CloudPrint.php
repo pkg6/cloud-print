@@ -122,4 +122,9 @@ class CloudPrint
     {
         return $this->config['default'];
     }
+
+    public function __call(string $name, array $arguments)
+    {
+        return $this->client()->$name(...$arguments);
+    }
 }
