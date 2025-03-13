@@ -2,11 +2,10 @@
 	<strong>云小票机SDK-cloud-print</strong>
 </p>
 
-
-
-
 > 非官方云小票机SDK，支持飞鹅云，芯烨云，易联云，快递100，映美云，中午云，佳博云，优声云，365智能云打印等
+> 
 
+[![Latest Stable Version](http://poser.pugx.org/pkg6/cloud-print/v)](https://packagist.org/packages/pkg6/cloud-print) [![Total Downloads](http://poser.pugx.org/pkg6/cloud-print/downloads)](https://packagist.org/packages/pkg6/cloud-print) [![Latest Unstable Version](http://poser.pugx.org/pkg6/cloud-print/v/unstable)](https://packagist.org/packages/pkg6/cloud-print) [![License](http://poser.pugx.org/pkg6/cloud-print/license)](https://packagist.org/packages/pkg6/cloud-print) [![PHP Version Require](http://poser.pugx.org/pkg6/cloud-print/require/php)](https://packagist.org/packages/pkg6/cloud-print)
 
 
 ## 安装
