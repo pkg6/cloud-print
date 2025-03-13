@@ -29,6 +29,8 @@ composer require pkg6/cloud-print
 >
 > ```
 > public function setRequestLogger(LoggerInterface $logger)
+> //自定义日志格式（借助guzzlehttp/guzzle中的handler）进行实现
+> public function setLogFormatter(string $logFormatter);
 > ```
 
 ## 适配模式
