@@ -42,7 +42,7 @@ return [
             'client_id' => "",
             'client_secret' => "",
         ],
-        'zhongwuyun2' => [
+        'zhongwuyun' => [
             "type" => 'zhongwuyun',
             'appid' => "",
             'appsecret' => "",
