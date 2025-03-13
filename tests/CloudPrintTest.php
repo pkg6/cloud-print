@@ -14,53 +14,53 @@
 
 namespace Pkg6\CloudPrint\Tests;
 
-class FactoryTest extends BaseTest
+class CloudPrintTest extends BaseTest
 {
     public function testFeieyun()
     {
-        $app = $this->Feieyun();
+        $app = $this->newCloudPrint()->client("feieyun");
         $this->assertInstanceOf(\Pkg6\cloudPrint\Feieyun\Client::class, $app);
     }
 
     public function testJolimark()
     {
-        $app = $this->Jolimark();
+        $app = $this->newCloudPrint()->client("jolimark");
         $this->assertInstanceOf(\Pkg6\cloudPrint\Jolimark\Client::class, $app);
     }
 
     public function testKuaidi100()
     {
-        $app = $this->Kuaidi100();
+        $app = $this->newCloudPrint()->client("kuaidi100");
         $this->assertInstanceOf(\Pkg6\cloudPrint\Kuaidi100\Client::class, $app);
     }
 
     public function testPoscom()
     {
-        $app = $this->Poscom();
+        $app = $this->newCloudPrint()->client("poscom");
         $this->assertInstanceOf(\Pkg6\cloudPrint\Poscom\Client::class, $app);
     }
 
     public function testUshengyun()
     {
-        $app = $this->Ushengyun();
+        $app = $this->newCloudPrint()->client("ushengyun");
         $this->assertInstanceOf(\Pkg6\cloudPrint\Ushengyun\Client::class, $app);
     }
 
     public function testXpyun()
     {
-        $app = $this->Xpyun();
+        $app = $this->newCloudPrint()->client("xpyun");
         $this->assertInstanceOf(\Pkg6\cloudPrint\Xpyun\Client::class, $app);
     }
 
     public function testYilianyun()
     {
-        $app = $this->Yilianyun();
+        $app = $this->newCloudPrint()->client("yilianyun");
         $this->assertInstanceOf(\Pkg6\cloudPrint\Yilianyun\Client::class, $app);
     }
 
     public function testZhongwuyun()
     {
-        $app = $this->Zhongwuyun();
+        $app = $this->newCloudPrint()->client("zhongwuyun");
         $this->assertInstanceOf(\Pkg6\cloudPrint\Zhongwuyun\Client::class, $app);
     }
 }

@@ -12,38 +12,32 @@
  * This source file is subject to the MIT license that is bundled.
  */
 
-namespace Pkg6\cloudPrint\Tests;
+namespace Pkg6\CloudPrint\Tests;
 
-use Mockery;
-use Mockery\Mock;
 use PHPUnit\Framework\TestCase;
-use Pkg6\cloudPrint\Factory;
-use Pkg6\cloudPrint\Kernel\BaseClient;
-use Pkg6\cloudPrint\Zhongwuyun\AppContainer;
+use Pkg6\CloudPrint\CloudPrint;
+use Pkg6\CloudPrint\Factory;
 
 class BaseTest extends TestCase
 {
+    protected $config = [];
+
+    public function __construct(?string $name = null, array $data = [], $dataName = '')
+    {
+        $this->config = array_merge($this->config, require './config/config.php');
+        parent::__construct($name, $data, $dataName);
+    }
+
+    /**
+     * @return void
+     */
     public function testBase()
     {
         $this->assertEquals(1, 1);
     }
 
     /**
-     * @param $name
-     * @param $app
-     *
-     * @return Mock
-     */
-    public function mockApiClient($name, $app)
-    {
-        BaseClient::$request_log = true;
-        $client = Mockery::mock($name, [$app])->makePartial();
-
-        return $client;
-    }
-
-    /**
-     * @return \Pkg6\cloudPrint\Feieyun\AppContainer
+     * @return \Pkg6\CloudPrint\Feieyun\Client
      */
     public function Feieyun()
     {
@@ -54,7 +48,7 @@ class BaseTest extends TestCase
     }
 
     /**
-     * @return \Pkg6\cloudPrint\Jolimark\AppContainer
+     * @return \Pkg6\CloudPrint\Jolimark\Client
      */
     public function Jolimark()
     {
@@ -65,7 +59,7 @@ class BaseTest extends TestCase
     }
 
     /**
-     * @return \Pkg6\cloudPrint\Kuaidi100\AppContainer
+     * @return \Pkg6\CloudPrint\Kuaidi100\Client
      */
     public function Kuaidi100()
     {
@@ -76,7 +70,7 @@ class BaseTest extends TestCase
     }
 
     /**
-     * @return \Pkg6\cloudPrint\Poscom\AppContainer
+     * @return \Pkg6\CloudPrint\Poscom\Client
      */
     public function Poscom()
     {
@@ -87,17 +81,7 @@ class BaseTest extends TestCase
     }
 
     /**
-     * @return \Pkg6\cloudPrint\Printcenter\AppContainer
-     */
-    public function Printcenter()
-    {
-        return Factory::Printcenter([
-            'key' => 'fasjkldjaskl',
-        ]);
-    }
-
-    /**
-     * @return \Pkg6\cloudPrint\Ushengyun\AppContainer
+     * @return \Pkg6\CloudPrint\Ushengyun\Client
      */
     public function Ushengyun()
     {
@@ -108,7 +92,7 @@ class BaseTest extends TestCase
     }
 
     /**
-     * @return \Pkg6\cloudPrint\Xpyun\AppContainer
+     * @return \Pkg6\CloudPrint\Xpyun\Client
      */
     public function Xpyun()
     {
@@ -119,7 +103,7 @@ class BaseTest extends TestCase
     }
 
     /**
-     * @return \Pkg6\cloudPrint\Yilianyun\AppContainer
+     * @return \Pkg6\CloudPrint\Yilianyun\Client
      */
     public function Yilianyun()
     {
@@ -130,7 +114,7 @@ class BaseTest extends TestCase
     }
 
     /**
-     * @return AppContainer
+     * @return \Pkg6\CloudPrint\Zhongwuyun\Client
      */
     public function Zhongwuyun()
     {
@@ -138,5 +122,10 @@ class BaseTest extends TestCase
             'appid' => '******',
             'appsecret' => '******',
         ]);
+    }
+
+    public function newCloudPrint()
+    {
+        return new CloudPrint($this->config);
     }
 }
