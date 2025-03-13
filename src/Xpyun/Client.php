@@ -39,7 +39,7 @@ class Client extends BaseClient
      */
     public function addPrinters($private_params)
     {
-        return $this->request('addPrinters', $private_params);
+        return $this->request("", 'addPrinters', $private_params);
     }
 
     /**
@@ -53,7 +53,7 @@ class Client extends BaseClient
      */
     public function delPrinters($private_params)
     {
-        return $this->request('delPrinters', $private_params);
+        return $this->request("", 'delPrinters', $private_params);
     }
 
     /**
@@ -67,7 +67,7 @@ class Client extends BaseClient
      */
     public function updPrinter($private_params)
     {
-        return $this->request('updPrinter', $private_params);
+        return $this->request("", 'updPrinter', $private_params);
     }
 
     /**
@@ -81,7 +81,7 @@ class Client extends BaseClient
      */
     public function queryPrinterStatus($private_params)
     {
-        return $this->request('queryPrinterStatus', $private_params);
+        return $this->request("", 'queryPrinterStatus', $private_params);
     }
 
     /**
@@ -95,7 +95,7 @@ class Client extends BaseClient
      */
     public function print($private_params)
     {
-        return $this->request('print', $private_params);
+        return $this->request("", 'print', $private_params);
     }
 
     /**
@@ -109,7 +109,7 @@ class Client extends BaseClient
      */
     public function printLabel($private_params)
     {
-        return $this->request('printLabel', $private_params);
+        return $this->request("", 'printLabel', $private_params);
     }
 
     /**
@@ -123,7 +123,7 @@ class Client extends BaseClient
      */
     public function delPrinterQueue($private_params)
     {
-        return $this->request('delPrinterQueue', $private_params);
+        return $this->request("", 'delPrinterQueue', $private_params);
     }
 
     /**
@@ -137,7 +137,7 @@ class Client extends BaseClient
      */
     public function queryOrderState($private_params)
     {
-        return $this->request('queryOrderState', $private_params);
+        return $this->request("", 'queryOrderState', $private_params);
     }
 
     /**
@@ -151,7 +151,7 @@ class Client extends BaseClient
      */
     public function queryOrderStatis($private_params)
     {
-        return $this->request('queryOrderStatis', $private_params);
+        return $this->request("", 'queryOrderStatis', $private_params);
     }
 
     /**
@@ -165,7 +165,7 @@ class Client extends BaseClient
      */
     public function queryPrintersStatus($private_params)
     {
-        return $this->request('queryPrintersStatus', $private_params);
+        return $this->request("", 'queryPrintersStatus', $private_params);
     }
 
     /**
@@ -179,7 +179,7 @@ class Client extends BaseClient
      */
     public function setVoiceType($private_params)
     {
-        return $this->request('setVoiceType', $private_params);
+        return $this->request("", 'setVoiceType', $private_params);
     }
 
     /**
@@ -193,6 +193,6 @@ class Client extends BaseClient
      */
     public function playVoice($private_params)
     {
-        return $this->request('playVoice', $private_params);
+        return $this->request("", 'playVoice', $private_params);
     }
 }

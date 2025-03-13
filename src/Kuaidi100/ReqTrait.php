@@ -14,22 +14,26 @@
 
 namespace Pkg6\CloudPrint\Kuaidi100;
 
-use Exception;
-use GuzzleHttp\Exception\GuzzleException;
-
 trait ReqTrait
 {
+    protected $_requestUrl;
+
+    public function setRequestUrl($requestUrl)
+    {
+        $this->_requestUrl = $requestUrl;
+
+        return $this;
+    }
+
     /**
-     * @param $url
      * @param $action
      * @param $private_params
      *
      * @return string
      *
-     * @throws Exception
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function request($url, $action, $private_params)
+    public function request($action, $private_params)
     {
         $timestamp = time();
         $params = [
@@ -40,9 +44,9 @@ trait ReqTrait
             'param' => json_encode($private_params),
         ];
         if ($action == 'imgOrder') {
-            return $this->httpGet($url, $params, ['Content-Type' => 'multipart/form-data']);
+            return $this->httpGet($this->_requestUrl, $params, ['Content-Type' => 'multipart/form-data']);
         } else {
-            return $this->httpPost($url, $params);
+            return $this->httpPost($this->_requestUrl, $params);
         }
     }
     protected function sign($param, $t)

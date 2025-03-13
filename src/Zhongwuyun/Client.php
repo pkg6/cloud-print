@@ -20,6 +20,7 @@ use Pkg6\CloudPrint\BaseClient;
 class Client extends BaseClient
 {
     use ReqTrait;
+
     protected $host = 'http://api.zhongwuyun.com';
 
     protected $config = [
@@ -27,18 +28,19 @@ class Client extends BaseClient
         'appid' => "",
         'appsecret' => "",
     ];
+
     /**
      * 获取某台打印机状态
      *
      * @param $private_params
      *
-     * @throws GuzzleException
-     *
      * @return mixed
+     *
+     * @throws GuzzleException
      */
     public function status($private_params)
     {
-        return $this->request('status', $private_params, true);
+        return $this->request("GET", 'status', $private_params);
     }
 
     /**
@@ -52,7 +54,7 @@ class Client extends BaseClient
      */
     public function print($private_params)
     {
-        return $this->request('', $private_params);
+        return $this->request("POST", '', $private_params);
     }
 
     /**
@@ -60,13 +62,13 @@ class Client extends BaseClient
      *
      * @param $private_params
      *
-     * @throws GuzzleException
-     *
      * @return mixed
+     *
+     * @throws GuzzleException
      */
     public function emptyPrintqueue($private_params)
     {
-        return $this->request('emptyprintqueue', $private_params);
+        return $this->request("POST", 'emptyprintqueue', $private_params);
     }
 
     /**
@@ -74,13 +76,13 @@ class Client extends BaseClient
      *
      * @param $private_params
      *
-     * @throws GuzzleException
-     *
      * @return string
+     *
+     * @throws GuzzleException
      */
     public function cancelOne($private_params)
     {
-        return $this->request('cancelone', $private_params);
+        return $this->request("POST", 'cancelone', $private_params);
     }
 
     /**
@@ -88,13 +90,13 @@ class Client extends BaseClient
      *
      * @param $private_params
      *
-     * @throws GuzzleException
-     *
      * @return mixed
+     *
+     * @throws GuzzleException
      */
     public function printStatus($private_params)
     {
-        return $this->request('printstatus', $private_params, true);
+        return $this->request("POST", 'printstatus', $private_params, true);
     }
 
     /**
@@ -102,13 +104,13 @@ class Client extends BaseClient
      *
      * @param $private_params
      *
-     * @throws GuzzleException
-     *
      * @return string
+     *
+     * @throws GuzzleException
      */
     public function sound($private_params)
     {
-        return $this->request('sound', $private_params);
+        return $this->request("POST", 'sound', $private_params);
     }
 
     /**
@@ -116,12 +118,12 @@ class Client extends BaseClient
      *
      * @param $private_params
      *
-     * @throws GuzzleException
-     *
      * @return string
+     *
+     * @throws GuzzleException
      */
     public function voice($private_params)
     {
-        return $this->request('voice', $private_params);
+        return $this->request("POST", 'voice', $private_params);
     }
 }

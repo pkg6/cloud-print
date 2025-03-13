@@ -14,10 +14,11 @@
 
 namespace Pkg6\CloudPrint;
 
+use Pkg6\CloudPrint\Contracts\ClientInterface;
 use Pkg6\CloudPrint\Traits\CacheTrait;
 use Pkg6\CloudPrint\Traits\HttpClientTrait;
 
-class BaseClient
+abstract class BaseClient implements ClientInterface
 {
     use HttpClientTrait,CacheTrait;
 

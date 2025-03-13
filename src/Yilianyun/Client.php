@@ -43,7 +43,7 @@ class Client extends BaseClient
      */
     public function addPrinter($private_params)
     {
-        return $this->request('printer/addprinter', $private_params);
+        return $this->request("", 'printer/addprinter', $private_params);
     }
 
     /**
@@ -57,7 +57,7 @@ class Client extends BaseClient
      */
     public function deletePrinter($private_params)
     {
-        return $this->request('printer/deleteprinter', $private_params);
+        return $this->request("", 'printer/deleteprinter', $private_params);
     }
 
     /**
@@ -71,7 +71,7 @@ class Client extends BaseClient
      */
     public function getPrintStatus($private_params)
     {
-        return $this->request('printer/getprintstatus', $private_params);
+        return $this->request("", 'printer/getprintstatus', $private_params);
     }
 
     /**
@@ -85,7 +85,7 @@ class Client extends BaseClient
      */
     public function shutdownreStart($private_params)
     {
-        return $this->request('printer/shutdownrestart', $private_params);
+        return $this->request("", 'printer/shutdownrestart', $private_params);
     }
 
     /**
@@ -99,7 +99,7 @@ class Client extends BaseClient
      */
     public function setSound($private_params)
     {
-        return $this->request('printer/setsound', $private_params);
+        return $this->request("", 'printer/setsound', $private_params);
     }
 
     /**
@@ -113,7 +113,7 @@ class Client extends BaseClient
      */
     public function setVoice($private_params)
     {
-        return $this->request('printer/setvoice', $private_params);
+        return $this->request("", 'printer/setvoice', $private_params);
     }
 
     /**
@@ -127,7 +127,7 @@ class Client extends BaseClient
      */
     public function deleteVoice($private_params)
     {
-        return $this->request('printer/deletevoice', $private_params);
+        return $this->request("", 'printer/deletevoice', $private_params);
     }
 
     /**
@@ -141,7 +141,7 @@ class Client extends BaseClient
      */
     public function print($private_params)
     {
-        return $this->request('print/index', $private_params);
+        return $this->request("", 'print/index', $private_params);
     }
 
     /**
@@ -155,7 +155,7 @@ class Client extends BaseClient
      */
     public function picturePrint($private_params)
     {
-        return $this->request('pictureprint/index', $private_params);
+        return $this->request("", 'pictureprint/index', $private_params);
     }
 
     /**
@@ -169,7 +169,7 @@ class Client extends BaseClient
      */
     public function expressPrint($private_params)
     {
-        return $this->request('expressprint/index', $private_params);
+        return $this->request("", 'expressprint/index', $private_params);
     }
 
     /**
@@ -183,7 +183,7 @@ class Client extends BaseClient
      */
     public function cancelOne($private_params)
     {
-        return $this->request('printer/cancelone', $private_params);
+        return $this->request("", 'printer/cancelone', $private_params);
     }
 
     /**
@@ -197,7 +197,7 @@ class Client extends BaseClient
      */
     public function cancelAll($private_params)
     {
-        return $this->request('printer/cancelall', $private_params);
+        return $this->request("", 'printer/cancelall', $private_params);
     }
 
     /**
@@ -211,7 +211,7 @@ class Client extends BaseClient
      */
     public function getOrderStatus($private_params)
     {
-        return $this->request('printer/getorderstatus', $private_params);
+        return $this->request("", 'printer/getorderstatus', $private_params);
     }
 
     /**
@@ -223,6 +223,6 @@ class Client extends BaseClient
      */
     public function getOrderpagingList($private_params)
     {
-        return $this->request('printer/getorderpaginglist', $private_params);
+        return $this->request("", 'printer/getorderpaginglist', $private_params);
     }
 }

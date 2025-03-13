@@ -20,15 +20,15 @@ use GuzzleHttp\Exception\GuzzleException;
 trait ReqTrait
 {
     /**
+     * @param $method
      * @param $action
      * @param $private_params
      *
      * @return string
      *
-     * @throws Exception
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function request($action, $private_params)
+    public function request($method, $action, $private_params)
     {
         $timestamp = time();
         $public_params = [

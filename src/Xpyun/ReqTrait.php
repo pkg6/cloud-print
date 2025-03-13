@@ -28,7 +28,7 @@ trait ReqTrait
      * @throws Exception
      * @throws GuzzleException
      */
-    public function request($action, $private_params)
+    public function request($method, $action, $private_params)
     {
         $timestamp = time();
         $public_params = [

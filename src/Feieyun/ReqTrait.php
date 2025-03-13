@@ -16,7 +16,7 @@ namespace Pkg6\CloudPrint\Feieyun;
 
 trait ReqTrait
 {
-    public function request($action, array $private_params = [])
+    public function request($method, $action, array $private_params = [])
     {
         $timestamp = time();
         $public_params = [

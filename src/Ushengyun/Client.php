@@ -39,7 +39,7 @@ class Client extends BaseClient
      */
     public function status($private_params)
     {
-        return $this->request('status', $private_params);
+        return $this->request("", 'status', $private_params);
     }
 
     /**
@@ -51,7 +51,7 @@ class Client extends BaseClient
      */
     public function print($private_params)
     {
-        return $this->request('print', $private_params);
+        return $this->request("", 'print', $private_params);
     }
     /**
      * 清空待打印队列.
@@ -62,7 +62,7 @@ class Client extends BaseClient
      */
     public function emptyPrintqueue($private_params)
     {
-        return $this->request('emptyprintqueue', $private_params);
+        return $this->request("", 'emptyprintqueue', $private_params);
     }
 
     /**
@@ -74,7 +74,7 @@ class Client extends BaseClient
      */
     public function cancelOne($private_params)
     {
-        return $this->request('cancelone', $private_params);
+        return $this->request("", 'cancelone', $private_params);
     }
 
     /**
@@ -86,7 +86,7 @@ class Client extends BaseClient
      */
     public function printStatus($private_params)
     {
-        return $this->request('printstatus', $private_params);
+        return $this->request("", 'printstatus', $private_params);
     }
 
     /**
@@ -98,7 +98,7 @@ class Client extends BaseClient
      */
     public function sound($private_params)
     {
-        return $this->request('sound', $private_params);
+        return $this->request("", 'sound', $private_params);
     }
 
     /**
@@ -108,6 +108,6 @@ class Client extends BaseClient
      */
     public function logo($private_params)
     {
-        return $this->request('logo', $private_params);
+        return $this->request("", 'logo', $private_params);
     }
 }

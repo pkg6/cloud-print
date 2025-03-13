@@ -16,7 +16,7 @@ namespace Pkg6\CloudPrint\Ushengyun;
 
 trait ReqTrait
 {
-    public function request($action, $private_params)
+    public function request($method, $action, $private_params)
     {
         $time = time();
         $public_params = [

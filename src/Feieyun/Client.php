@@ -37,7 +37,7 @@ class Client extends BaseClient
      */
     public function openRrinterAddlist($private_params)
     {
-        return $this->request('Open_printerAddlist', $private_params);
+        return $this->request("", 'Open_printerAddlist', $private_params);
     }
     /**
      * 删除批量打印机，Open_printerDelList.
@@ -48,7 +48,7 @@ class Client extends BaseClient
      */
     public function openPrinterDelList($private_params)
     {
-        return $this->request('Open_printerDelList', $private_params);
+        return $this->request("", 'Open_printerDelList', $private_params);
     }
     /**
      * 修改打印机信息，Open_printerEdit.
@@ -59,7 +59,7 @@ class Client extends BaseClient
      */
     public function openPrinterEdit($private_params)
     {
-        return $this->request('Open_printerEdit', $private_params);
+        return $this->request("", 'Open_printerEdit', $private_params);
     }
     /**
      * 获取某台打印机状态，Open_queryPrinterStatus.
@@ -70,7 +70,7 @@ class Client extends BaseClient
      */
     public function openQueryPrinterStatus($private_params)
     {
-        return $this->request('Open_queryPrinterStatus', $private_params);
+        return $this->request("", 'Open_queryPrinterStatus', $private_params);
     }
     public function print($private_params, $type)
     {
@@ -89,7 +89,7 @@ class Client extends BaseClient
      */
     public function openPrintMsg($private_params)
     {
-        return $this->request('Open_printMsg', $private_params);
+        return $this->request("", 'Open_printMsg', $private_params);
     }
     /**
      * 标签机打印订单，Open_printLabelMsg.
@@ -100,7 +100,7 @@ class Client extends BaseClient
      */
     public function openPrintLabelMsg($private_params)
     {
-        return $this->request('Open_printLabelMsg', $private_params);
+        return $this->request("", 'Open_printLabelMsg', $private_params);
     }
 
     /**
@@ -112,7 +112,7 @@ class Client extends BaseClient
      */
     public function openDelPrinterSqs($private_params)
     {
-        return $this->request('Open_delPrinterSqs', $private_params);
+        return $this->request("", 'Open_delPrinterSqs', $private_params);
     }
     /**
      * 查询订单是否打印成功，Open_queryOrderState.
@@ -123,7 +123,7 @@ class Client extends BaseClient
      */
     public function openQueryOrderState($private_params)
     {
-        return $this->request('Open_queryOrderState', $private_params);
+        return $this->request("", 'Open_queryOrderState', $private_params);
     }
 
     /**
@@ -135,6 +135,6 @@ class Client extends BaseClient
      */
     public function openQueryOrderInfoByDate($private_params)
     {
-        return $this->request('Open_queryOrderInfoByDate', $private_params);
+        return $this->request("", 'Open_queryOrderInfoByDate', $private_params);
     }
 }

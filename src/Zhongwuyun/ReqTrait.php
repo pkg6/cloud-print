@@ -29,7 +29,7 @@ trait ReqTrait
      * @throws Exception
      * @throws GuzzleException
      */
-    public function request($action, $private_params, $is_get = false)
+    public function request($method, $action, $private_params)
     {
         $public_params = [
             'appid' => $this->config['appid'],
@@ -38,7 +38,7 @@ trait ReqTrait
         $params = array_filter(array_merge($public_params, $private_params));
         $params['sign'] = $this->sign($params);
         $url = $this->config['host'] ?? $this->host . '/' . $action;
-        if ($is_get) {
+        if ($method == "get" || $method == "GET") {
             return $this->httpGet($url, $params);
         } else {
             return $this->httpPost($url, $params);
