@@ -43,7 +43,7 @@ class Factory
      */
     protected static function make($name, array $config)
     {
-        $app = __NAMESPACE__ . '\\' . $name . '\\AppContainer';
+        $app = __NAMESPACE__ . '\\' . $name . '\\Client';
         if ( ! class_exists($app)) {
             throw new InvalidArgumentException('class not exists:' . $app);
         }

@@ -29,19 +29,6 @@ composer require pkg6/cloud-print
 $printer = \Pkg6\CloudPrint\Factory::Feieyun([
     'user' => '',
     'ukey' => '',
-    'cache' => [
-        //必须定义
-        "class" => \Pkg6\Cache\cache\driver\File::class,
-        //其他选项
-        'expire'        => 0,
-        'cache_subdir'  => true,
-        'prefix'        => '',
-        'path'          => './cache/',
-        'hash_type'     => 'md5',
-        'data_compress' => false,
-        'tag_prefix'    => 'tag:',
-        'serialize'     => [],
-    ],
 ]);
 ~~~
 
@@ -53,7 +40,7 @@ $printer = \Pkg6\CloudPrint\Factory::Feieyun([
 $printer = \Pkg6\CloudPrint\Factory::Zhongwuyun([
     'appid'     => '******',
     'appsecret' => '******',
-])->printer;
+]);
 ~~~
 
 ### 基于 [优声云](https://www.ushengyun.com/) 的 PHP 接口组件
@@ -62,7 +49,7 @@ $printer = \Pkg6\CloudPrint\Factory::Zhongwuyun([
 $printer = \Pkg6\CloudPrint\Factory::Ushengyun([
     'appId'     => '10001',
     'appSecret' => '**********',
-])->printer;
+]);
 ~~~
 
 ### 基于[佳博云](https://dev.poscom.cn/)的 PHP 接口组件
@@ -71,7 +58,7 @@ $printer = \Pkg6\CloudPrint\Factory::Ushengyun([
 $printer = \Pkg6\CloudPrint\Factory::Poscom([
     'memberCode' => '',
     'apiKey'     => '',
-])->printer;
+]);
 ~~~
 
 ### 基于[快递100](https://api.kuaidi100.com/document/5f0ff6adbc8da837cbd8aef8)的 PHP 接口组件
@@ -80,7 +67,7 @@ $printer = \Pkg6\CloudPrint\Factory::Poscom([
 $printer = \Pkg6\CloudPrint\Factory::Kuaidi100([
     'key' => '',
     'secret' => '',
-])->printer;
+]);
 ~~~
 
 ### 基于[易联云](https://www.yilianyun.net/)的 PHP 接口组件
@@ -89,7 +76,7 @@ $printer = \Pkg6\CloudPrint\Factory::Kuaidi100([
 $printer = \Pkg6\CloudPrint\Factory::Yilianyun([
     'client_id'     => '',
     'client_secret' => '',
-])->printer;
+]);
 ~~~
 
 ### 基于[映美云](http://open.jolimark.com/)的 PHP 接口组件
@@ -98,7 +85,7 @@ $printer = \Pkg6\CloudPrint\Factory::Yilianyun([
 $printer = \Pkg6\CloudPrint\Factory::Jolimark([
     'app_id'  => '',
     'app_key' => '',
-])->printer;
+]);
 ~~~
 
 ### 基于 [芯烨云](https://www.xpyun.net/open/index.html) 的 PHP 接口组件
@@ -107,7 +94,7 @@ $printer = \Pkg6\CloudPrint\Factory::Jolimark([
 $printer = \Pkg6\CloudPrint\Factory::Xpyun([
     'user'    => '',
     'userKey' => '',
-])->printer;
+]);
 ~~~
 
 ### 基于 [飞鹅云](http://help.feieyun.com/document.php) 的 PHP 接口组件
@@ -116,7 +103,7 @@ $printer = \Pkg6\CloudPrint\Factory::Xpyun([
 $printer = \Pkg6\CloudPrint\Factory::Feieyun([
     'user' => '',
     'ukey' => '',
-])->printer;
+]);
 ~~~
 
 
