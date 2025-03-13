@@ -20,7 +20,7 @@ trait ReqTrait
 {
     use ReqBT;
 
-    public function request($method, $action, array $private_params = [])
+    public function request($method, $action, $private_params)
     {
         $timestamp = time();
         $public_params = [

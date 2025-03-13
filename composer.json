@@ -55,7 +55,6 @@
     "tests": [
       "php ./vendor/bin/phpunit"
     ],
-    "fixer": "vendor/bin/php-cs-fixer fix",
-    "try-fixer": "vendor/bin/php-cs-fixer fix --diff --dry-run"
+    "fixer": "vendor/bin/php-cs-fixer fix"
   }
 }

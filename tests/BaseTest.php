@@ -15,10 +15,19 @@
 namespace Pkg6\CloudPrint\Tests;
 
 use PHPUnit\Framework\TestCase;
+use Pkg6\CloudPrint\CloudPrint;
 use Pkg6\CloudPrint\Factory;
 
 class BaseTest extends TestCase
 {
+    protected $config = [];
+
+    public function __construct(?string $name = null, array $data = [], $dataName = '')
+    {
+        $this->config = array_merge($this->config, require './config/config.php');
+        parent::__construct($name, $data, $dataName);
+    }
+
     /**
      * @return void
      */
@@ -113,5 +122,10 @@ class BaseTest extends TestCase
             'appid' => '******',
             'appsecret' => '******',
         ]);
+    }
+
+    public function newCloudPrint()
+    {
+        return new CloudPrint($this->config);
     }
 }

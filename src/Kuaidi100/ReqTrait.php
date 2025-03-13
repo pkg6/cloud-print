@@ -21,6 +21,7 @@ trait ReqTrait
     use ReqBT;
 
     /**
+     * @param $method
      * @param $action
      * @param $private_params
      *
@@ -28,7 +29,7 @@ trait ReqTrait
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function request($action, $private_params)
+    public function request($method, $action, $private_params)
     {
         $url = $this->getRequestUrl();
         $timestamp = time();
@@ -45,6 +46,7 @@ trait ReqTrait
             return $this->httpPost($url, $params);
         }
     }
+
     protected function sign($param, $t)
     {
         return strtoupper(md5(json_encode($param) . $t . $this->config['key'] . $this->config['secret']));
