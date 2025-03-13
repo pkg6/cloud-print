@@ -16,9 +16,23 @@ namespace Pkg6\CloudPrint\Traits;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\MessageFormatter;
+use GuzzleHttp\Middleware;
+use Psr\Log\LoggerInterface;
 
 trait HttpClientTrait
 {
+
+    /**
+     * @var \Psr\Log\LoggerInterface
+     */
+    protected $logger = null;
+
+    /**
+     * @var string
+     */
+    protected $logFormatter = "";
     /**
      * @var array
      */
@@ -27,6 +41,36 @@ trait HttpClientTrait
             'User-Agent' => 'cloud-print (https://github.com/pkg6/cloud-print)',
         ]
     ];
+
+    /**
+     * @param \Psr\Log\LoggerInterface $logger
+     * @return  $this
+     */
+    public function setRequestLogger(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+        return $this;
+    }
+
+    /**
+     * @param string $logFormatter
+     * @return $this
+     */
+    public function setLogFormatter(string $logFormatter)
+    {
+        $this->logFormatter = $logFormatter;
+        return $this;
+    }
+
+    public function getLogFormatter()
+    {
+        if ($this->logFormatter) {
+            return $this->logFormatter;
+        }
+        return "ReqTrait:\n{method} {uri} HTTP/{version}\nHeaders: {req_headers}\nBody: {req_body}\n\n" .
+            "Response:\nStatus: {code}\nHeaders: {res_headers}\nBody: {res_body}";
+    }
+
 
     /**
      * @param string $url
@@ -106,10 +150,10 @@ trait HttpClientTrait
      */
     protected function httpClient()
     {
-        if ( ! class_exists(Client::class)) {
-            throw new \RuntimeException('Not installed guzzlehttp/guzzle');
+        $stack = HandlerStack::create();
+        if ($this->logger) {
+            $stack->push(Middleware::log($this->logger, new MessageFormatter($this->getLogFormatter())));
         }
-
-        return new Client(array_merge($this->config['http'], $this->guzzleConfig));
+        return new Client(['handler' => $stack]);
     }
 }

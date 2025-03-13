@@ -8,7 +8,7 @@ trait CacheTrait
 {
 
     /**
-     * @var CacheInterface
+     * @var CacheInterface|null
      */
     protected $cache = null;
 
