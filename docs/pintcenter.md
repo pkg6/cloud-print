@@ -4,7 +4,7 @@
 <?php
 require 'vendor/autoload.php';
 
-$printer = \Pkg6\cloudPrint\Factory::Printcenter([
+$printer = \Pkg6\CloudPrint\Factory::Printcenter([
     'key' => '',
 ])->printer;
 

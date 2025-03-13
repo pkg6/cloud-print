@@ -5,7 +5,7 @@
 
 require 'vendor/autoload.php';
 
-$printer = \Pkg6\cloudPrint\Factory::Kuaidi100([
+$printer = \Pkg6\CloudPrint\Factory::Kuaidi100([
     'key' => '',
     'secret' => '',
 ])->printer;

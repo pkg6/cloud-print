@@ -5,7 +5,7 @@
 
 require 'vendor/autoload.php';
 
-$printer = \Pkg6\cloudPrint\Factory::Yilianyun([
+$printer = \Pkg6\CloudPrint\Factory::Yilianyun([
     'client_id'     => '',
     'client_secret' => '',
 ])->printer;

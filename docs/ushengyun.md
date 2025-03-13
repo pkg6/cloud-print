@@ -6,7 +6,7 @@
 require 'vendor/autoload.php';
 
 
-$printer = \Pkg6\cloudPrint\Factory::Ushengyun([
+$printer = \Pkg6\CloudPrint\Factory::Ushengyun([
     'appId'     => '10001',
     'appSecret' => '**********',
 ])->printer;

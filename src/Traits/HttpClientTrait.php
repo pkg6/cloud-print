@@ -12,15 +12,13 @@
  * This source file is subject to the MIT license that is bundled.
  */
 
-namespace Pkg6\cloudPrint\Kernel;
+namespace Pkg6\CloudPrint\Traits;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
-use InvalidArgumentException;
 
-trait HttpClient
+trait HttpClientTrait
 {
-
     /**
      * @var array
      */
@@ -109,7 +107,7 @@ trait HttpClient
     protected function httpClient()
     {
         if ( ! class_exists(Client::class)) {
-            throw new InvalidArgumentException('Not installed guzzlehttp/guzzle');
+            throw new \RuntimeException('Not installed guzzlehttp/guzzle');
         }
 
         return new Client(array_merge($this->config['http'], $this->guzzleConfig));

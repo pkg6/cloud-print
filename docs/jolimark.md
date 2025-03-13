@@ -5,7 +5,7 @@
 
 require 'vendor/autoload.php';
 
-$printer = \Pkg6\cloudPrint\Factory::Jolimark([
+$printer = \Pkg6\CloudPrint\Factory::Jolimark([
     'app_id'  => '',
     'app_key' => '',
 ])->printer;

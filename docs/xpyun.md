@@ -5,7 +5,7 @@
 
 require 'vendor/autoload.php';
 
-$printer = \Pkg6\cloudPrint\Factory::Xpyun([
+$printer = \Pkg6\CloudPrint\Factory::Xpyun([
     'user'    => '',
     'userKey' => '',
 ])->printer;

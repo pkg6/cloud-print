@@ -5,7 +5,7 @@
 
 require 'vendor/autoload.php';
 
-$printer = \Pkg6\cloudPrint\Factory::Poscom([
+$printer = \Pkg6\CloudPrint\Factory::Poscom([
     'memberCode' => '',
     'apiKey'     => '',
 ])->printer;

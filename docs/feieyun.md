@@ -4,7 +4,7 @@
 <?php
 require 'vendor/autoload.php';
 
-$printer = \Pkg6\cloudPrint\Factory::Feieyun([
+$printer = \Pkg6\CloudPrint\Factory::Feieyun([
     'user' => '',
     'ukey' => '',
 ])->printer;
