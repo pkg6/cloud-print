@@ -58,7 +58,7 @@ trait ReqTrait
     protected function accessToken()
     {
         $key = $this->config['client_id'] . ":" . $this->config['client_secret'];
-        $access_token = $this->cache()?->get($key);
+        $access_token = $this->cache?->get($key);
         if ( ! empty($access_token)) {
             return $access_token;
         }
@@ -71,7 +71,7 @@ trait ReqTrait
         if (empty($data['body']['access_token'])) {
             return $resp;
         }
-        $this->cache()?->set($key, $data['body']['access_token'], $data['body']['expires_in']);
+        $this->cache?->set($key, $data['body']['access_token'], $data['body']['expires_in']);
 
         return $data['body']['access_token'];
     }

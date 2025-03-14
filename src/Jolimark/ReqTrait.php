@@ -57,8 +57,8 @@ trait ReqTrait
     protected function accessToken()
     {
         $key = md5($this->config['app_id'] . $this->config['app_key']);
-        if ($this->cache->has($key)) {
-            return $this->cache->get($key);
+        if ($this->cache?->has($key)) {
+            return $this->cache?->get($key);
         }
         $time = time();
         $params = [
@@ -71,7 +71,7 @@ trait ReqTrait
         if (empty($data['return_data']['access_token'])) {
             return $resp;
         }
-        $this->cache->set($key, $data['return_data']['access_token'], $data['return_data']['expires_in']);
+        $this->cache?->set($key, $data['return_data']['access_token'], $data['return_data']['expires_in']);
 
         return $data['return_data']['access_token'];
     }

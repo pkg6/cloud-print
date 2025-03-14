@@ -30,12 +30,4 @@ trait CacheTrait
 
         return $this;
     }
-
-    /**
-     * @return CacheInterface
-     */
-    protected function cache()
-    {
-        return $this->cache;
-    }
 }

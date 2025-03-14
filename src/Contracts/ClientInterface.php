@@ -20,7 +20,13 @@ use Psr\SimpleCache\CacheInterface;
 
 interface ClientInterface
 {
+    /**
+     * @param \Psr\SimpleCache\CacheInterface $cache
+     *
+     * @return mixed
+     */
     public function setCache(CacheInterface $cache);
+
     /**
      * @param \Psr\Log\LoggerInterface $logger
      *
@@ -29,13 +35,11 @@ interface ClientInterface
     public function setRequestLogger(LoggerInterface $logger);
 
     /**
-     * @param string $logFormatter
+     * @param \GuzzleHttp\MessageFormatter $messageFormatter
      *
-     * @return $this
-     *
-     * @see MessageFormatter
+     * @return mixed
      */
-    public function setLogFormatter(string $logFormatter);
+    public function setMessageFormatter(MessageFormatter $messageFormatter);
 
     /**
      * @param $requestUrl
