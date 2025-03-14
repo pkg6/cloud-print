@@ -138,7 +138,7 @@ class BaseTest extends TestCase
     {
         $log = new Logger(["console" => new StreamHandler()]);
         $client->setRequestLogger($log);
-
+        $client->enabledRequestLog();
         return Mockery::mock($client)->makePartial();
     }
 

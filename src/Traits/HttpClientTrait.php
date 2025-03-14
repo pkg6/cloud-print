@@ -33,6 +33,9 @@ trait HttpClientTrait
      * @var \GuzzleHttp\MessageFormatter
      */
     protected $messageFormatter = null;
+
+    protected $logRequests = false;
+
     /**
      * @var array
      */
@@ -64,6 +67,11 @@ trait HttpClientTrait
         $this->messageFormatter = $messageFormatter;
 
         return $this;
+    }
+
+    public function enabledRequestLog()
+    {
+        return $this->logRequests = true;
     }
 
     /**
@@ -145,7 +153,7 @@ trait HttpClientTrait
     protected function httpClient()
     {
         $stack = HandlerStack::create();
-        if ($this->logger) {
+        if ( ! is_null($this->logger) && $this->logRequests == true) {
             if (is_null($this->messageFormatter)) {
                 $this->setMessageFormatter(new MessageFormatter());
             }
