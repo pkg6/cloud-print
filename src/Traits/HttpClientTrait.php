@@ -30,9 +30,9 @@ trait HttpClientTrait
     protected $logger = null;
 
     /**
-     * @var string
+     * @var \GuzzleHttp\MessageFormatter
      */
-    protected $logFormatter = "";
+    protected $messageFormatter = null;
     /**
      * @var array
      */
@@ -55,25 +55,15 @@ trait HttpClientTrait
     }
 
     /**
-     * @param string $logFormatter
+     * @param \GuzzleHttp\MessageFormatter $messageFormatter
      *
      * @return $this
      */
-    public function setLogFormatter(string $logFormatter)
+    public function setMessageFormatter(MessageFormatter $messageFormatter)
     {
-        $this->logFormatter = $logFormatter;
+        $this->messageFormatter = $messageFormatter;
 
         return $this;
-    }
-
-    public function getLogFormatter()
-    {
-        if ($this->logFormatter) {
-            return $this->logFormatter;
-        }
-
-        return "ReqTrait:\n{method} {uri} HTTP/{version}\nHeaders: {req_headers}\nBody: {req_body}\n\n" .
-            "Response:\nStatus: {code}\nHeaders: {res_headers}\nBody: {res_body}";
     }
 
     /**
@@ -156,7 +146,10 @@ trait HttpClientTrait
     {
         $stack = HandlerStack::create();
         if ($this->logger) {
-            $stack->push(Middleware::log($this->logger, new MessageFormatter($this->getLogFormatter())));
+            if (is_null($this->messageFormatter)) {
+                $this->setMessageFormatter(new MessageFormatter());
+            }
+            $stack->push(Middleware::log($this->logger, $this->messageFormatter));
         }
 
         return new Client(['handler' => $stack]);

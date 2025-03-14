@@ -131,12 +131,14 @@ class BaseTest extends TestCase
 
     /**
      * @param \Pkg6\CloudPrint\Contracts\ClientInterface $client
+     *
      * @return Mock
      */
     public function mockApiClient(ClientInterface $client)
     {
         $log = new Logger(["console" => new StreamHandler()]);
         $client->setRequestLogger($log);
+
         return Mockery::mock($client)->makePartial();
     }
 

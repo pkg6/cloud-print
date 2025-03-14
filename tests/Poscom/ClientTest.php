@@ -1,5 +1,17 @@
 <?php
 
+/*
+ * This file is part of the pkg6/cloud-print.
+ *
+ * (c) pkg6 <https://github.com/pkg6>
+ *
+ * (L) Licensed <https://opensource.org/license/MIT>
+ *
+ * (A) zhiqiang <https://www.zhiqiang.wang>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Pkg6\CloudPrint\Tests\Poscom;
 
 use Pkg6\CloudPrint\Tests\BaseTest;
@@ -20,7 +32,6 @@ class ClientTest extends BaseTest
         ];
         $this->methodPrivateParams('addGroup', $private_params);
     }
-
 
     public function testAddDev()
     {
@@ -63,7 +74,6 @@ class ClientTest extends BaseTest
         ];
         $this->methodPrivateParams('getStatus', $private_params);
     }
-
 
     public function testSendMsg()
     {
