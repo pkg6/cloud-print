@@ -27,6 +27,7 @@ interface ClientInterface
      */
     public function setCache(CacheInterface $cache);
 
+    public function enabledRequestLog();
     /**
      * @param \Psr\Log\LoggerInterface $logger
      *

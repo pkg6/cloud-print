@@ -29,102 +29,18 @@ composer require pkg6/cloud-print
 > ```
 > public function setRequestLogger(LoggerInterface $logger)
 > //自定义日志格式（借助guzzlehttp/guzzle中的handler）进行实现
-> public function setLogFormatter(string $logFormatter);
+> public function setMessageFormatter(MessageFormatter $messageFormatter)
 > ```
 
 ## 适配模式
 
 > 需要定义的服务商实现客户端
 >
-> ```
-> interface ClientInterface
-> {
->     public function setCache(CacheInterface $cache);
->     /**
->      * @param \Psr\Log\LoggerInterface $logger
->      * @return $this
->      */
->     public function setRequestLogger(LoggerInterface $logger);
-> 
->     /**
->      * @param string $logFormatter
->      * @return $this
->      * @see MessageFormatter
->      */
->     public function setLogFormatter(string $logFormatter);
-> 
->     /**
->      * @param $requestUrl
->      * @return $this
->      */
->     public function setRequestUrl($requestUrl);
-> 
->     /**
->      * @return string
->      */
->     public function getRequestUrl();
-> 
->     /**
->      * @param $method
->      * @param $action
->      * @param $privateParams
->      * @return mixed
->      */
->     public function request($method, $action, $privateParams);
-> }
-> ```
+> https://github.com/pkg6/cloud-print/blob/main/src/Contracts/ClientInterface.php
 
 ### 配置
 
-~~~
-$config =[
-    // 默认发送配置
-    'default' => "feieyun",
-    // 可用的网关配置
-    'clients' => [
-        "feieyun" => [
-            "type" => 'feieyun',
-            'user' => "",
-            'ukey' => "",
-        ],
-        'jolimark' => [
-            "type" => 'jolimark',
-            'app_id' => "",
-            'app_key' => "",
-        ],
-        // 需要自己setRequestUrl传入url
-        'kuaidi100' => [
-            "type" => 'kuaidi100',
-            'key' => "",
-            'secret' => "",
-        ],
-        'poscom' => [
-            "type" => 'poscom',
-            'memberCode' => "",
-            'apiKey' => "",
-        ],
-        'ushengyun' => [
-            "type" => 'ushengyun',
-            'appId' => "",
-            'appSecret' => "",
-        ],
-        'xpyun' => [
-            "type" => 'xpyun',
-            "user" => "",
-            "userKey" => "",
-        ],
-        'yilianyun' => [
-            "type" => 'yilianyun',
-            'client_id' => "",
-            'client_secret' => "",
-        ],
-        'zhongwuyun' => [
-            "type" => 'zhongwuyun',
-            'appid' => "",
-            'appsecret' => "",
-        ],
-    ],
-~~~
+> https://github.com/pkg6/cloud-print/blob/main/config/config.php
 
 ### 实例化
 
