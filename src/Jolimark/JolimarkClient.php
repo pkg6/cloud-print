@@ -45,7 +45,7 @@ class JolimarkClient extends BaseClient
      */
     public function request($method, $action, $private_params)
     {
-        $url = $this->config['host'] ?? $this->host . $action;
+        $url = ($this->config['host'] ?? $this->host) . $action;
         $public_params = [
             'app_id' => $this->config['app_id'],
         ];

@@ -91,7 +91,7 @@ class YilianyunClient extends BaseClient
      */
     protected function buildHost($action)
     {
-        return $this->config['host'] ?? $this->host . $action;
+        return ($this->config['host'] ?? $this->host) . $action;
     }
 
     /**
