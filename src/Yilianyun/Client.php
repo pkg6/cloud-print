@@ -16,6 +16,7 @@ namespace Pkg6\CloudPrint\Yilianyun;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Pkg6\CloudPrint\BaseClient;
+use Pkg6\CloudPrint\Requests\PrintRequest;
 
 class Client extends BaseClient
 {
@@ -139,9 +140,43 @@ class Client extends BaseClient
      *
      * @return string
      */
-    public function print($private_params)
+    public function print(PrintRequest $request): string
     {
-        return $this->request("", 'print/index', $private_params);
+        $params = $this->buildPrintParams($request);
+
+        $type = $request->getType();
+
+        if ($type === 'picture') {
+            return $this->picturePrint($params);
+        }
+
+        if ($type === 'express') {
+            return $this->expressPrint($params);
+        }
+
+        return $this->request("", 'print/index', $params);
+    }
+
+    protected function buildPrintParams(PrintRequest $request): array
+    {
+        $params = [
+            'sn' => $request->getSn(),
+            'content' => $request->getContent(),
+        ];
+
+        if ($request->getCopies() > 1) {
+            $params['times'] = $request->getCopies();
+        }
+
+        if ($request->getOrderId()) {
+            $params['orderid'] = $request->getOrderId();
+        }
+
+        if ($request->getExtra()) {
+            $params = array_merge($params, $request->getExtra());
+        }
+
+        return array_filter($params, fn ($v) => ! is_null($v));
     }
 
     /**

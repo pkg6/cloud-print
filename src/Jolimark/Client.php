@@ -16,7 +16,7 @@ namespace Pkg6\CloudPrint\Jolimark;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Pkg6\CloudPrint\BaseClient;
-use UnexpectedValueException;
+use Pkg6\CloudPrint\Requests\PrintRequest;
 
 class Client extends BaseClient
 {
@@ -105,58 +105,82 @@ class Client extends BaseClient
      *
      * @throws GuzzleException
      */
-    public function print($private_params, $type)
+    public function print(PrintRequest $request): string
+    {
+        $params = $this->buildPrintParams($request);
+
+        return $this->printByType($params, $request->getType());
+    }
+
+    protected function printByType(array $params, ?string $type): string
     {
         switch ($type) {
-            //简单url
-            case 1:
-                $resp = $this->printHtmlUrl($private_params);
-                break;
-                //简单html
-            case 2:
-                $resp = $this->printHtmlCode($private_params);
-                break;
-                //复杂url转图片
-            case 3:
-                $resp = $this->printHtmlToPic($private_params);
-                break;
-                //复杂url转灰度图
-            case 4:
-                $resp = $this->printHtmlToGrayPic($private_params);
-                break;
-                //映美模版
-            case 5:
-                $resp = $this->printHtmlTemplate($private_params);
-                break;
-                //坐标
-            case 6:
-                $resp = $this->printPointText($private_params);
-                break;
-                //快递单
-            case 7:
-                $resp = $this->printExpress($private_params);
-                break;
-                //打印复杂页面(html代码)
-            case 8:
-                $resp = $this->printRichHtmlCode($private_params);
-                break;
-                //打印ESC指令
-            case 9:
-                $resp = $this->printEsc($private_params);
-                break;
-                //打印本地文件
-            case 10:
-                $resp = $this->printFile($private_params);
-                break;
-                //打印远程文件
-            case 11:
-                $resp = $this->fileByUrlPrint($private_params);
-                break;
+            case 'html_url':
+                return $this->printHtmlUrl($params);
+            case 'html_code':
+                return $this->printHtmlCode($params);
+            case 'html_to_pic':
+                return $this->printHtmlToPic($params);
+            case 'html_to_gray_pic':
+                return $this->printHtmlToGrayPic($params);
+            case 'template':
+                return $this->printHtmlTemplate($params);
+            case 'point_text':
+                return $this->printPointText($params);
+            case 'express':
+                return $this->printExpress($params);
+            case 'rich_html_code':
+                return $this->printRichHtmlCode($params);
+            case 'esc':
+                return $this->printEsc($params);
+            case 'file':
+                return $this->printFile($params);
+            case 'file_by_url':
+                return $this->fileByUrlPrint($params);
+            case 'label':
+                return $this->printLabel($params);
+            case 'invoice':
+                return $this->printInvoice($params);
             default:
-                throw new UnexpectedValueException("{$type} Command not entered");
+                return $this->printHtmlUrl($params);
+        }
+    }
+
+    protected function buildPrintParams(PrintRequest $request): array
+    {
+        $params = [
+            'sn' => $request->getSn(),
+        ];
+
+        if ($request->getContent()) {
+            $params['content'] = $request->getContent();
         }
 
-        return $resp;
+        if ($request->getCopies() > 1) {
+            $params['times'] = $request->getCopies();
+        }
+
+        if ($request->getOrderId()) {
+            $params['orderid'] = $request->getOrderId();
+        }
+
+        if ($request->getTemplateId()) {
+            $params['templateId'] = $request->getTemplateId();
+        }
+
+        if ($request->getImageUrl()) {
+            $params['imageUrl'] = $request->getImageUrl();
+        }
+
+        if ($request->getHtmlUrl()) {
+            $params['htmlUrl'] = $request->getHtmlUrl();
+        }
+
+        if ($request->getExtra()) {
+            $params = array_merge($params, $request->getExtra());
+        }
+
+        return array_filter($params, fn ($v) => ! is_null($v));
     }
     /**
      * 打印映美规范HTML页面-传URL地址

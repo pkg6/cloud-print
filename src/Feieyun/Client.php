@@ -15,6 +15,7 @@
 namespace Pkg6\CloudPrint\Feieyun;
 
 use Pkg6\CloudPrint\BaseClient;
+use Pkg6\CloudPrint\Requests\PrintRequest;
 
 class Client extends BaseClient
 {
@@ -72,13 +73,37 @@ class Client extends BaseClient
     {
         return $this->request("", 'Open_queryPrinterStatus', $private_params);
     }
-    public function print($private_params, $type)
+    public function print(PrintRequest $request): string
     {
-        if ($type == 'label') {
-            return $this->openPrintLabelMsg($private_params);
+        $params = $this->buildPrintParams($request);
+
+        if ($request->getType() === 'label') {
+            return $this->openPrintLabelMsg($params);
         }
 
-        return $this->openPrintMsg($private_params);
+        return $this->openPrintMsg($params);
+    }
+
+    protected function buildPrintParams(PrintRequest $request): array
+    {
+        $params = [
+            'sn' => $request->getSn(),
+            'content' => $request->getContent(),
+        ];
+
+        if ($request->getCopies() > 1) {
+            $params['times'] = $request->getCopies();
+        }
+
+        if ($request->getOrderId()) {
+            $params['orderid'] = $request->getOrderId();
+        }
+
+        if ($request->getExtra()) {
+            $params = array_merge($params, $request->getExtra());
+        }
+
+        return array_filter($params, fn ($v) => ! is_null($v));
     }
     /**
      * 打印订单，Open_printMsg.
