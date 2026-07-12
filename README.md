@@ -52,6 +52,70 @@ $cloudPrint->client("zhongwuyun")->request($method, $action, $privateParams)
 $cloudPrint->request($method, $action, $privateParams)
 ~~~
 
+## 统一打印协议
+
+> 所有厂商客户端实现统一的 `print(PrintRequest $request)` 方法，通过 `PrintRequest` 参数类传递打印参数。
+
+### PrintRequest 参数
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `sn` | `string` | 打印机编号 |
+| `content` | `string` | 打印内容 |
+| `copies` | `int` | 打印份数，默认 1 |
+| `orderId` | `string` | 订单号 |
+| `type` | `string` | 打印类型（厂商差异） |
+| `templateId` | `string` | 模板ID |
+| `imageUrl` | `string` | 图片地址 |
+| `htmlUrl` | `string` | HTML地址 |
+| `extra` | `array` | 各厂商私有扩展字段 |
+
+### 基本用法
+
+~~~
+use Pkg6\CloudPrint\Requests\PrintRequest;
+
+$request = PrintRequest::create()
+    ->sn('99999999')
+    ->content('订单内容')
+    ->copies(1)
+    ->orderId('12345');
+
+$client->print($request);
+~~~
+
+### 使用 type 参数
+
+~~~
+// 飞鹅云 - 标签打印
+$request = PrintRequest::create()
+    ->sn('99999999')
+    ->content('标签内容')
+    ->type('label');
+
+// 映美云 - 多种打印模式
+$request = PrintRequest::create()
+    ->sn('99999999')
+    ->htmlUrl('https://example.com/order.html')
+    ->type('html_url');  // html_code / html_to_pic / template / express / esc 等
+
+// 易联云 - 图片打印
+$request = PrintRequest::create()
+    ->sn('99999999')
+    ->imageUrl('https://example.com/image.png')
+    ->type('picture');
+~~~
+
+### 厂商 type 映射表
+
+| 厂商 | type 值 | 说明 |
+|------|---------|------|
+| 飞鹅云 | `label` | 标签打印 |
+| 芯烨云 | `label` | 标签打印 |
+| 易联云 | `picture` / `express` | 图片打印 / 面单打印 |
+| 映美云 | `html_url` / `html_code` / `html_to_pic` / `html_to_gray_pic` / `template` / `point_text` / `express` / `rich_html_code` / `esc` / `file` / `file_by_url` / `label` / `invoice` | 13种打印模式 |
+| 其余厂商 | 默认 | 文本打印 |
+
 ## 门脸模式
 
 > 可以直接到实现请求的客户端，内置很多方法可以供使用

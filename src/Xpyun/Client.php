@@ -16,6 +16,7 @@ namespace Pkg6\CloudPrint\Xpyun;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Pkg6\CloudPrint\BaseClient;
+use Pkg6\CloudPrint\Requests\PrintRequest;
 
 class Client extends BaseClient
 {
@@ -93,9 +94,37 @@ class Client extends BaseClient
      *
      * @return string
      */
-    public function print($private_params)
+    public function print(PrintRequest $request): string
     {
-        return $this->request("", 'print', $private_params);
+        $params = $this->buildPrintParams($request);
+
+        if ($request->getType() === 'label') {
+            return $this->printLabel($params);
+        }
+
+        return $this->request("", 'print', $params);
+    }
+
+    protected function buildPrintParams(PrintRequest $request): array
+    {
+        $params = [
+            'sn' => $request->getSn(),
+            'content' => $request->getContent(),
+        ];
+
+        if ($request->getCopies() > 1) {
+            $params['times'] = $request->getCopies();
+        }
+
+        if ($request->getOrderId()) {
+            $params['orderid'] = $request->getOrderId();
+        }
+
+        if ($request->getExtra()) {
+            $params = array_merge($params, $request->getExtra());
+        }
+
+        return array_filter($params, fn ($v) => ! is_null($v));
     }
 
     /**

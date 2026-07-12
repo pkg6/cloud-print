@@ -15,6 +15,7 @@
 namespace Pkg6\CloudPrint\Contracts;
 
 use GuzzleHttp\MessageFormatter;
+use Pkg6\CloudPrint\Requests\PrintRequest;
 use Psr\Log\LoggerInterface;
 use Psr\SimpleCache\CacheInterface;
 
@@ -62,4 +63,13 @@ interface ClientInterface
      * @return mixed
      */
     public function request($method, $action, $privateParams);
+
+    /**
+     * 统一打印入口.
+     *
+     * @param \Pkg6\CloudPrint\Requests\PrintRequest $request
+     *
+     * @return string
+     */
+    public function print(PrintRequest $request): string;
 }
