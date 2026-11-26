@@ -86,6 +86,17 @@ class BaseTest extends TestCase
     }
 
     /**
+     * @return \Pkg6\CloudPrint\Spyun\Client
+     */
+    public function Spyun()
+    {
+        return Factory::Spyun([
+            'appid' => 'sp5c1314095ed15',
+            'appsecret' => '735aa25a15b75e6c1e0760823a22346a',
+        ]);
+    }
+
+    /**
      * @return \Pkg6\CloudPrint\Ushengyun\Client
      */
     public function Ushengyun()

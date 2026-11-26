@@ -2,7 +2,7 @@
 	<strong>云小票机SDK-cloud-print</strong>
 </p>
 
-> 非官方云小票机SDK，支持飞鹅云，芯烨云，易联云，快递100，映美云，中午云，佳博云，优声云，365智能云打印等
+> 非官方云小票机SDK，支持飞鹅云，芯烨云，商鹏云，易联云，快递100，映美云，中午云，佳博云，优声云，365智能云打印等
 > 
 
 [![Latest Stable Version](http://poser.pugx.org/pkg6/cloud-print/v)](https://packagist.org/packages/pkg6/cloud-print) [![Total Downloads](http://poser.pugx.org/pkg6/cloud-print/downloads)](https://packagist.org/packages/pkg6/cloud-print) [![Latest Unstable Version](http://poser.pugx.org/pkg6/cloud-print/v/unstable)](https://packagist.org/packages/pkg6/cloud-print) [![License](http://poser.pugx.org/pkg6/cloud-print/license)](https://packagist.org/packages/pkg6/cloud-print) [![PHP Version Require](http://poser.pugx.org/pkg6/cloud-print/require/php)](https://packagist.org/packages/pkg6/cloud-print)
@@ -112,6 +112,7 @@ $request = PrintRequest::create()
 |------|---------|------|
 | 飞鹅云 | `label` | 标签打印 |
 | 芯烨云 | `label` | 标签打印 |
+| 商鹏云 | `label` | 标贴打印 |
 | 易联云 | `picture` / `express` | 图片打印 / 面单打印 |
 | 映美云 | `html_url` / `html_code` / `html_to_pic` / `html_to_gray_pic` / `template` / `point_text` / `express` / `rich_html_code` / `esc` / `file` / `file_by_url` / `label` / `invoice` | 13种打印模式 |
 | 其余厂商 | 默认 | 文本打印 |
@@ -126,6 +127,15 @@ $request = PrintRequest::create()
 $printer = \Pkg6\CloudPrint\Factory::Zhongwuyun([
     'appid'     => '******',
     'appsecret' => '******',
+]);
+~~~
+
+### 基于 [商鹏云](https://www.spyun.net/open/index.html) 的 PHP 接口组件
+
+~~~
+$printer = \Pkg6\CloudPrint\Factory::Spyun([
+    'appid'     => '',
+    'appsecret' => '',
 ]);
 ~~~
 
@@ -197,6 +207,7 @@ $printer = \Pkg6\CloudPrint\Factory::Feieyun([
 
 - [飞鹅云](http://help.feieyun.com/document.php) 
 - [芯烨云](https://www.xpyun.net/open/index.html)
+- [商鹏云](https://www.spyun.net/open/index.html)
 - [易联云](https://www.yilianyun.net/)
 - [快递100](https://api.kuaidi100.com/document/5f0ff6a32977d50a94e10235)
 - [映美云](http://open.jolimark.com/)

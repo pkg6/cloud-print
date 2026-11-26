@@ -27,6 +27,11 @@ return [
             'memberCode' => "",
             'apiKey' => "",
         ],
+        'spyun' => [
+            "type" => 'spyun',
+            'appid' => "",
+            'appsecret' => "",
+        ],
         'ushengyun' => [
             "type" => 'ushengyun',
             'appId' => "",
