@@ -25,6 +25,7 @@ use InvalidArgumentException;
  * @method static Yilianyun\Client Yilianyun($config)
  * @method static Jolimark\Client Jolimark($config)
  * @method static Poscom\Client Poscom($config)
+ * @method static Spyun\Client Spyun($config)
  * @method static Zhongwuyun\Client Zhongwuyun($config)
  * @method static Ushengyun\Client Ushengyun($config)
  */

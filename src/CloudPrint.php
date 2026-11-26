@@ -27,6 +27,7 @@ class CloudPrint
         'jolimark' => Jolimark\Client::class,
         'kuaidi100' => Kuaidi100\Client::class,
         'poscom' => Poscom\Client::class,
+        'spyun' => Spyun\Client::class,
         'ushengyun' => Ushengyun\Client::class,
         'xpyun' => Xpyun\Client::class,
         'yilianyun' => Yilianyun\Client::class,

@@ -40,6 +40,12 @@ class CloudPrintTest extends BaseTest
         $this->assertInstanceOf(\Pkg6\cloudPrint\Poscom\Client::class, $app);
     }
 
+    public function testSpyun()
+    {
+        $app = $this->newCloudPrint()->client("spyun");
+        $this->assertInstanceOf(\Pkg6\cloudPrint\Spyun\Client::class, $app);
+    }
+
     public function testUshengyun()
     {
         $app = $this->newCloudPrint()->client("ushengyun");
